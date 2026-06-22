@@ -29,7 +29,7 @@ export default function Footer() {
               </span>
             </div>
             <p className="text-brand-textMuted text-xs leading-relaxed max-w-xs">
-              Designing and coding high-fidelity, high-throughput digital interfaces since 2020.
+              Designing and coding high-fidelity, high-throughput digital interfaces since 2023.
             </p>
           </div>
 

@@ -7,7 +7,7 @@ export const timelineData = [
     role: "Master of Computer Application (MCA)",
     company: "Uka Tarsadia University",
     location: "Bardoli, Gujarat",
-    duration: "2024 - Present",
+    duration: "2026 - Present",
     description: "Advanced studies in enterprise software architectures, mobile application development, database management systems, and modern web application frameworks.",
     bullets: [
       "Currently pursuing, maintaining a high academic standing.",
@@ -35,7 +35,7 @@ export const timelineData = [
     role: "Web Development Intern",
     company: "3Skill",
     location: "Remote",
-    duration: "2024",
+    duration: "2026",
     description: "A practical developer internship focused on writing modular web code, styling interfaces, and connecting server endpoints.",
     bullets: [
       "Developed responsive frontend components using React and styled with Tailwind CSS.",
@@ -49,7 +49,7 @@ export const timelineData = [
     role: "Bachelor of Computer Application (BCA)",
     company: "Uka Tarsadia University",
     location: "Bardoli, Gujarat",
-    duration: "2021 - 2024",
+    duration: "2023 - 2026",
     description: "Completed undergraduate degree in Computer Applications, focusing on core programming, databases, and software fundamentals.",
     bullets: [
       "Graduated with Distinction, demonstrating academic excellence (GPA: 8.42/10).",
