@@ -22,6 +22,8 @@ export const skillCategories = [
     skills: [
       { name: "Node.js" },
       { name: "Express.js" },
+      { name: "PHP" },
+      { name: "Python" },
       { name: "REST API Design" },
       { name: "JWT Authentication" }
     ]
@@ -32,7 +34,8 @@ export const skillCategories = [
     description: "Structuring collections, optimizing queries, and managing schema schemas.",
     skills: [
       { name: "MongoDB" },
-      { name: "Mongoose ODM" }
+      { name: "Mongoose ODM" },
+      { name: "MySQL" }
     ]
   },
   {
