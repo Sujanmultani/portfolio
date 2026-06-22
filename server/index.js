@@ -47,22 +47,21 @@ app.use(cors({
 // Rate Limiters
 const contactLimiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
-  limit: 5, // max 5 submissions per IP per window
+  limit: 15, // increased from 5 to 15 requests per IP per window
   standardHeaders: true,
   legacyHeaders: false,
-  message: { success: false, error: 'Too many messages sent. Please try again later.' },
+  message: { success: false, error: 'Too many messages sent. Please try again in a few minutes.' },
 });
 
-const adminLimiter = rateLimit({
-  windowMs: 15 * 60 * 1000, // 15 minutes
-  limit: 20, // max 20 requests per IP per window
+const messagesLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  limit: 50, // increased from 20 to 50 — this is an admin-only route protected by ADMIN_SECRET anyway
   standardHeaders: true,
   legacyHeaders: false,
-  message: { success: false, error: 'Too many requests. Access restricted.' },
 });
 
 app.use('/api/contact', contactLimiter);
-app.use('/api/messages', adminLimiter);
+app.use('/api/messages', messagesLimiter);
 
 // Disable Mongoose command buffering so queries fail instantly instead of hanging when DB is offline
 mongoose.set('bufferCommands', false);
