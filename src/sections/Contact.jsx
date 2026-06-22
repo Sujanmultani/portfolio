@@ -209,13 +209,15 @@ export default function Contact() {
               <form onSubmit={handleFormSubmit} className="space-y-5">
                 {/* Honeypot field (hidden from users, exposed to bots) */}
                 <div style={{ position: 'absolute', left: '-9999px', top: '-9999px' }} aria-hidden="true">
+                  <label htmlFor="contact_verification_field">Leave this field empty</label>
                   <input
                     type="text"
-                    name="honeypot"
-                    value={formData.honeypot}
-                    onChange={handleInputChange}
-                    tabIndex="-1"
+                    id="contact_verification_field"
+                    name="contact_verification_field"
                     autoComplete="off"
+                    tabIndex="-1"
+                    value={formData.honeypot}
+                    onChange={(e) => setFormData({ ...formData, honeypot: e.target.value })}
                   />
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">

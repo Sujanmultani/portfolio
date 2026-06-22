@@ -104,7 +104,10 @@ app.post('/api/contact', async (req, res) => {
     const { name, email, phone, subject, message, honeypot } = req.body;
 
     // Honeypot spam trap
-    if (honeypot) return res.status(200).json({ success: true });
+    if (honeypot) {
+      console.warn('Honeypot triggered — submission treated as spam and ignored:', { name, email, honeypot });
+      return res.status(200).json({ success: true });
+    }
 
     // Validate type and structure of inputs
     if (
