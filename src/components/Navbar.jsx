@@ -72,7 +72,7 @@ export default function Navbar({ activeSection = "" }) {
             className="font-display italic font-bold text-2xl text-brand-ink tracking-tight hover:text-brand-amber transition-colors duration-300 focus:outline-none"
             onClick={closeMobileMenu}
           >
-            {personalInfo.name.split(" ")[0]}
+            {personalInfo.name}
             <span className="text-brand-amber">.</span>
           </a>
 

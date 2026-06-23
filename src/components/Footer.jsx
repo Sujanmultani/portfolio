@@ -21,7 +21,7 @@ export default function Footer() {
           <div className="text-left space-y-2">
             <div className="flex items-center gap-2">
               <span className="font-display italic font-bold text-xl text-brand-cream">
-                {personalInfo.name.split(" ")[0]}
+                {personalInfo.name}
                 <span className="text-brand-amber">.</span>
               </span>
             </div>
