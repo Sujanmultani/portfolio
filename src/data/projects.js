@@ -67,27 +67,5 @@ export const projects = [
       ],
       outcome: "Successfully prototyped a secure web service resolving the coordination gap, enabling local agencies to claim donations within minutes."
     }
-  },
-  {
-    id: "smartrobot",
-    title: "IoT Based Smart Robot System",
-    subtitle: "Obstacle Avoidance & Voice Controlled Robotics",
-    shortDescription: "An intelligent robotic vehicle utilizing Arduino programming to execute obstacle avoidance, voice instructions, and remote controls.",
-    tags: ["Arduino", "IoT Controllers", "Sensors", "Automation", "Robotics"],
-    github: "Coming Soon",
-    live: "Coming Soon",
-    thumbnailColor: "from-amber-600 to-orange-900",
-    deviceType: "none",
-    caseStudy: {
-      problem: "Basic robotic vehicles struggle with collision avoidance in dynamic surroundings and lack multi-channel controls (manual vs. audio overrides).",
-      solution: "Coded Arduino scripts linking ultrasonic sensors for distance checking, and paired a Bluetooth module to interpret voice commands from a controller interface.",
-      role: "Hardware Programmer & Circuit Designer (Circuit board wiring, obstacle calculations scripting, motor speed tuning).",
-      features: [
-        "Automatic collision avoidance checking obstacles in a 15cm radius.",
-        "Voice trigger inputs configured for seamless direction changes.",
-        "Wireless remote override capability for manual operations."
-      ],
-      outcome: "Built a fully functional, self-navigating smart robot vehicle that runs autonomously with 95% collision prevention accuracy."
-    }
   }
 ];
