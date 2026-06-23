@@ -1,72 +1,62 @@
-import { Globe, Cpu, CreditCard, Smartphone } from "lucide-react";
-import GlassCard from "../components/GlassCard";
+import { motion } from "framer-motion";
 import { services } from "../data/services";
 
 export default function Services() {
-  // Resolve string icon references dynamically from Lucide library
-  const getIcon = (iconName) => {
-    switch (iconName) {
-      case "Globe":
-        return Globe;
-      case "Cpu":
-        return Cpu;
-      case "CreditCard":
-        return CreditCard;
-      case "Smartphone":
-        return Smartphone;
-      default:
-        return Globe;
-    }
-  };
-
   return (
-    <section id="services" className="py-24 relative overflow-hidden bg-brand-darker bg-grid-pattern">
-      {/* Background radial glow */}
-      <div className="absolute top-[30%] left-[40%] w-[600px] h-[600px] radial-glow-violet opacity-25 pointer-events-none" />
+    <section id="services" className="py-28 relative overflow-hidden bg-brand-cream border-b border-brand-line">
+      {/* Background warm light glow */}
+      <div className="absolute top-[20%] left-[-10%] w-[500px] h-[500px] radial-glow-amber opacity-40 pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10">
         
-        {/* Section Header */}
-        <div className="mb-16 text-center max-w-3xl mx-auto">
-          <span className="text-xs font-bold text-brand-accent tracking-widest uppercase mb-2 block">
-            04 . Custom Solutions
-          </span>
-          <h2 className="text-3xl md:text-4xl font-extrabold text-brand-textPrimary tracking-tight font-sans">
-            How I Can Add Value To Your Team
-          </h2>
-          <p className="text-brand-textSecondary text-sm sm:text-base mt-3">
-            I specialize in combining raw technology capabilities with refined user experience design to ship products that deliver business results.
-          </p>
-          <div className="w-16 h-1 bg-gradient-to-r from-brand-accent to-brand-violet rounded-full mt-4 mx-auto" />
+        {/* Chapter Header */}
+        <div className="mb-20">
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+            className="flex flex-col md:flex-row md:items-baseline gap-2 md:gap-6 border-b border-brand-line pb-6"
+          >
+            <span className="font-display italic text-2xl md:text-3xl text-brand-amber">
+              04
+            </span>
+            <span className="font-sans text-[10px] font-bold tracking-[0.2em] uppercase text-brand-inkMuted">
+              — Custom Solutions
+            </span>
+            <h2 className="text-4xl md:text-5xl font-bold font-display text-brand-ink md:ml-auto mt-2 md:mt-0">
+              Services.
+            </h2>
+          </motion.div>
         </div>
 
-        {/* Services Card Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {services.map((service, idx) => {
-            const Icon = getIcon(service.iconName);
-            return (
-              <GlassCard
-                key={service.id}
-                delay={idx * 0.1}
-                hoverEffect={true}
-                className="flex flex-col h-full p-6 md:p-8"
-              >
-                {/* Icon wrapper with hover scaling */}
-                <div className="w-12 h-12 rounded-2xl bg-indigo-500/10 border border-indigo-500/15 flex items-center justify-center text-indigo-400 mb-6 shrink-0 transition-all duration-300 group-hover:bg-indigo-500/20 group-hover:scale-105">
-                  <Icon size={24} />
-                </div>
-
-                <div className="space-y-3">
-                  <h3 className="text-lg font-bold text-brand-textPrimary font-sans">
-                    {service.title}
-                  </h3>
-                  <p className="text-brand-textSecondary text-sm leading-relaxed">
-                    {service.description}
-                  </p>
-                </div>
-              </GlassCard>
-            );
-          })}
+        {/* Numbered list format separated by thin hairline dividers - no icon-cards */}
+        <div className="max-w-4xl mx-auto divide-y divide-brand-line border-t border-b border-brand-line">
+          {services.map((service, idx) => (
+            <motion.div 
+              key={service.id}
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 1, delay: idx * 0.1, ease: [0.16, 1, 0.3, 1] }}
+              className="py-8 md:py-12 flex flex-col md:flex-row gap-6 md:gap-12 items-start md:items-baseline"
+            >
+              {/* Large serif numeral */}
+              <span className="font-display italic text-4xl md:text-5xl text-brand-amber font-semibold shrink-0 select-none">
+                {String(idx + 1).padStart(2, "0")}
+              </span>
+              
+              {/* Title */}
+              <h3 className="font-display text-xl md:text-2xl font-bold text-brand-ink md:w-1/3 shrink-0">
+                {service.title}
+              </h3>
+              
+              {/* Description */}
+              <p className="text-brand-inkSoft text-sm leading-relaxed font-sans flex-1">
+                {service.description}
+              </p>
+            </motion.div>
+          ))}
         </div>
 
       </div>

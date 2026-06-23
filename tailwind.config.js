@@ -8,41 +8,39 @@ export default {
     extend: {
       colors: {
         brand: {
-          dark: "#050506",
-          darker: "#020203",
-          card: "rgba(10, 10, 12, 0.4)",
-          cardHover: "rgba(16, 16, 20, 0.55)",
-          border: "rgba(255, 255, 255, 0.08)",
-          borderHover: "rgba(255, 255, 255, 0.16)",
-          accent: "#6366f1", // Electric Indigo
-          accentGlow: "rgba(99, 102, 241, 0.15)",
-          violet: "#8b5cf6",
-          emerald: "#10b981",
-          gold: "#E8B95D",
-          goldGlow: "rgba(232, 185, 93, 0.15)",
-          textPrimary: "#f3f4f6", // Gray 100
-          textSecondary: "#d1d5db", // Gray 300 (bumped from 9ca3af for higher contrast / WCAG compliance)
-          textMuted: "#9ca3af", // Gray 400 (bumped from 888f9c for higher contrast / WCAG compliance)
+          cream: "#FAF7F2",        // warm off-white base (not stark white)
+          paper: "#F2ECE2",        // slightly deeper warm surface for alternating sections
+          ink: "#15130F",          // near-black, warm-tinted for headings/body
+          inkSoft: "#4A463E",      // body text
+          inkMuted: "#8A8478",     // secondary/meta text
+          amber: "#C2541B",        // primary accent — deep burnt amber/terracotta
+          amberDeep: "#8F3C12",    // darker amber for hover/emphasis
+          amberLight: "#F3DCC4",   // light amber fill for badges/pills
+          line: "#E5DDD0",         // hairline border color
         }
       },
       fontFamily: {
-        sans: ["Inter", "Outfit", "system-ui", "-apple-system", "sans-serif"],
+        display: ["Fraunces", "serif"],   // for all headlines — distinctive editorial serif
+        sans: ["Inter", "system-ui", "sans-serif"],  // for body/UI text
       },
       animation: {
+        "marquee-left": "marqueeLeft 30s linear infinite",
+        "marquee-right": "marqueeRight 35s linear infinite",
+        "marquee-left-fast": "marqueeLeft 20s linear infinite",
         "float-slow": "float 8s ease-in-out infinite",
-        "float-medium": "float 6s ease-in-out infinite",
-        "float-fast": "float 4s ease-in-out infinite",
-        "pulse-glow": "pulseGlow 6s ease-in-out infinite",
-        "spin-slow": "spin 20s linear infinite",
       },
       keyframes: {
+        marqueeLeft: {
+          "0%": { transform: "translateX(0%)" },
+          "100%": { transform: "translateX(-50%)" },
+        },
+        marqueeRight: {
+          "0%": { transform: "translateX(-50%)" },
+          "100%": { transform: "translateX(0%)" },
+        },
         float: {
           "0%, 100%": { transform: "translateY(0px) rotate(0deg)" },
           "50%": { transform: "translateY(-15px) rotate(2deg)" },
-        },
-        pulseGlow: {
-          "0%, 100%": { opacity: 0.12, transform: "scale(1)" },
-          "50%": { opacity: 0.28, transform: "scale(1.08)" },
         }
       },
       backdropBlur: {

@@ -1,7 +1,5 @@
 import { useState, useEffect } from "react";
-import { FileText, Send } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import Button from "./Button";
 import { personalInfo } from "../data/personalInfo";
 import { cn } from "../lib/utils";
 
@@ -63,7 +61,7 @@ export default function Navbar({ activeSection = "" }) {
         className={cn(
           "fixed top-0 left-0 w-full z-50 transition-all duration-500",
           isScrolled 
-            ? "py-3 glass-panel shadow-[0_4px_30px_rgba(0,0,0,0.4)]" 
+            ? "py-4 bg-brand-cream/90 backdrop-blur-md border-b border-brand-line shadow-sm" 
             : "py-6 bg-transparent border-b border-transparent"
         )}
       >
@@ -71,16 +69,11 @@ export default function Navbar({ activeSection = "" }) {
           {/* Logo Name */}
           <a 
             href="#home" 
-            className="flex items-center gap-2 group focus:outline-none"
+            className="font-display italic font-bold text-2xl text-brand-ink tracking-tight hover:text-brand-amber transition-colors duration-300 focus:outline-none"
             onClick={closeMobileMenu}
           >
-            <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-brand-accent to-brand-violet flex items-center justify-center font-sans font-black text-white text-lg shadow-[0_0_15px_rgba(99,102,241,0.3)] group-hover:shadow-[0_0_20px_rgba(99,102,241,0.5)] transition-all duration-300">
-              S
-            </div>
-            <span className="font-sans font-bold text-xl text-brand-textPrimary tracking-tight group-hover:text-brand-accent transition-colors duration-300">
-              {personalInfo.name.split(" ")[0]}
-              <span className="text-brand-accent">.</span>
-            </span>
+            {personalInfo.name.split(" ")[0]}
+            <span className="text-brand-amber">.</span>
           </a>
 
           {/* Desktop Nav Items */}
@@ -93,15 +86,15 @@ export default function Navbar({ activeSection = "" }) {
                     <a
                       href={link.href}
                       className={cn(
-                        "text-sm font-medium tracking-wide transition-all relative py-1 hover:text-brand-textPrimary focus:outline-none select-none",
-                        isActive ? "text-brand-accent" : "text-brand-textSecondary"
+                        "font-sans text-[10px] font-bold tracking-[0.2em] uppercase transition-all relative py-1 hover:text-brand-ink focus:outline-none select-none",
+                        isActive ? "text-brand-amber" : "text-brand-inkMuted"
                       )}
                     >
                       {link.label}
                       {isActive && (
                         <motion.span
                           layoutId="activeIndicator"
-                          className="absolute bottom-0 left-0 right-0 h-0.5 bg-brand-accent rounded-full"
+                          className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-brand-amber"
                           transition={{ type: "spring", stiffness: 380, damping: 30 }}
                         />
                       )}
@@ -113,51 +106,46 @@ export default function Navbar({ activeSection = "" }) {
           </nav>
 
           {/* Actions CTA Buttons */}
-          <div className="hidden lg:flex items-center gap-4">
-            <Button
+          <div className="hidden lg:flex items-center gap-6">
+            <a
               href="/resume.pdf"
               download
               target="_blank"
-              variant="secondary"
-              size="sm"
-              icon={FileText}
-              iconPosition="left"
+              className="font-sans text-[10px] font-bold tracking-[0.15em] uppercase text-brand-inkSoft hover:text-brand-amber transition-colors underline underline-offset-4 decoration-brand-line hover:decoration-brand-amber"
             >
               Resume
-            </Button>
-            <Button
+            </a>
+            <a
               href="#contact"
-              variant="primary"
-              size="sm"
-              icon={Send}
+              className="font-sans text-[10px] font-bold tracking-[0.15em] uppercase text-brand-ink hover:text-brand-amber transition-colors underline underline-offset-4 decoration-brand-amber"
             >
               Let's Talk
-            </Button>
+            </a>
           </div>
 
           {/* Hamburger Menu Toggle button */}
           <button
             onClick={toggleMobileMenu}
             aria-label="Toggle Menu"
-            className="lg:hidden flex flex-col gap-1.5 justify-center items-center w-10 h-10 rounded-xl border border-brand-border bg-brand-card hover:bg-white/5 hover:border-brand-borderHover transition-all focus:outline-none z-50 select-none"
+            className="lg:hidden flex flex-col gap-1.5 justify-center items-center w-10 h-10 rounded-xl border border-brand-line bg-brand-paper hover:bg-brand-cream transition-all focus:outline-none z-50 select-none"
           >
             <motion.span
               variants={line1Variants}
               animate={isMobileOpen ? "opened" : "closed"}
               transition={{ duration: 0.2 }}
-              className="w-5 h-0.5 bg-brand-textPrimary rounded-full block origin-center"
+              className="w-5 h-0.5 bg-brand-ink rounded-full block origin-center"
             />
             <motion.span
               variants={line2Variants}
               animate={isMobileOpen ? "opened" : "closed"}
               transition={{ duration: 0.2 }}
-              className="w-5 h-0.5 bg-brand-textPrimary rounded-full block origin-center"
+              className="w-5 h-0.5 bg-brand-ink rounded-full block origin-center"
             />
             <motion.span
               variants={line3Variants}
               animate={isMobileOpen ? "opened" : "closed"}
               transition={{ duration: 0.2 }}
-              className="w-5 h-0.5 bg-brand-textPrimary rounded-full block origin-center"
+              className="w-5 h-0.5 bg-brand-ink rounded-full block origin-center"
             />
           </button>
         </div>
@@ -173,7 +161,7 @@ export default function Navbar({ activeSection = "" }) {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={closeMobileMenu}
-              className="fixed inset-0 bg-brand-darker/60 backdrop-blur-sm"
+              className="fixed inset-0 bg-brand-ink/10 backdrop-blur-sm"
             />
 
             {/* Slider Drawer panel */}
@@ -182,11 +170,11 @@ export default function Navbar({ activeSection = "" }) {
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "spring", damping: 25, stiffness: 200 }}
-              className="fixed top-0 right-0 bottom-0 w-80 max-w-full glass-panel border-l border-brand-border/60 shadow-2xl p-8 pt-24 flex flex-col justify-between"
+              className="fixed top-0 right-0 bottom-0 w-80 max-w-full bg-brand-cream border-l border-brand-line shadow-2xl p-8 pt-24 flex flex-col justify-between z-50"
             >
               {/* Menu lists */}
               <nav className="flex flex-col gap-8">
-                <span className="text-[10px] font-bold text-brand-textMuted uppercase tracking-widest border-b border-brand-border pb-2">
+                <span className="font-sans text-[10px] font-bold text-brand-inkMuted uppercase tracking-widest border-b border-brand-line pb-2">
                   Navigation Directory
                 </span>
                 <ul className="flex flex-col gap-4">
@@ -203,8 +191,8 @@ export default function Navbar({ activeSection = "" }) {
                           href={link.href}
                           onClick={closeMobileMenu}
                           className={cn(
-                            "text-lg font-semibold tracking-wide block py-2 select-none hover:text-brand-accent transition-colors",
-                            isActive ? "text-brand-accent" : "text-brand-textPrimary"
+                            "font-sans text-xs font-bold tracking-widest uppercase block py-2 select-none hover:text-brand-amber transition-colors",
+                            isActive ? "text-brand-amber" : "text-brand-ink"
                           )}
                         >
                           {link.label}
@@ -216,30 +204,23 @@ export default function Navbar({ activeSection = "" }) {
               </nav>
 
               {/* Action buttons footer */}
-              <div className="flex flex-col gap-3 mt-auto">
-                <Button
+              <div className="flex flex-col gap-4 mt-auto">
+                <a
                   href="/resume.pdf"
                   download
                   target="_blank"
-                  variant="secondary"
-                  size="md"
-                  icon={FileText}
-                  iconPosition="left"
                   onClick={closeMobileMenu}
-                  className="w-full justify-center"
+                  className="font-sans text-[11px] font-bold tracking-[0.15em] uppercase text-brand-inkSoft hover:text-brand-amber transition-colors text-center py-2.5 border border-brand-line rounded-xl hover:bg-brand-paper"
                 >
                   Resume
-                </Button>
-                <Button
+                </a>
+                <a
                   href="#contact"
-                  variant="primary"
-                  size="md"
-                  icon={Send}
                   onClick={closeMobileMenu}
-                  className="w-full justify-center"
+                  className="font-sans text-[11px] font-bold tracking-[0.15em] uppercase bg-brand-amber text-brand-cream hover:bg-brand-amberDeep transition-colors text-center py-2.5 rounded-xl"
                 >
                   Let's Talk
-                </Button>
+                </a>
               </div>
             </motion.div>
           </div>

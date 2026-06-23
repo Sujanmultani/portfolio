@@ -19,10 +19,10 @@ export default function Button({
   const baseStyles = "inline-flex items-center justify-center font-medium rounded-xl transition-all duration-300 focus:outline-none disabled:opacity-50 disabled:pointer-events-none select-none";
   
   const variants = {
-    primary: "bg-brand-accent text-white hover:bg-opacity-95 shadow-[0_0_15px_rgba(99,102,241,0.25),_0_0_15px_rgba(232,185,93,0.15)] hover:shadow-[0_0_25px_rgba(99,102,241,0.4),_0_0_25px_rgba(232,185,93,0.3)] border border-indigo-500/20",
-    secondary: "border border-brand-border text-brand-textPrimary bg-transparent hover:bg-white/5 hover:border-brand-textSecondary/50",
-    glass: "glass-card text-brand-textPrimary hover:bg-brand-cardHover border border-brand-border hover:border-brand-borderHover shadow-lg",
-    ghost: "text-brand-textSecondary hover:text-brand-textPrimary hover:bg-white/5",
+    primary: "bg-brand-amber text-brand-cream hover:bg-brand-amberDeep border border-brand-amberDeep/10 shadow-sm font-sans tracking-wide",
+    secondary: "border border-brand-line text-brand-inkSoft bg-transparent hover:bg-brand-paper transition-colors font-sans tracking-wide",
+    glass: "bg-brand-paper text-brand-ink border border-brand-line hover:border-brand-amber hover:bg-brand-cream shadow-sm font-sans tracking-wide",
+    ghost: "text-brand-inkMuted hover:text-brand-ink transition-colors font-sans tracking-wide",
   };
 
   const sizes = {

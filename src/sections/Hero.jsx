@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Mail, ArrowRight, Download, Server, Database, Code } from "lucide-react";
+import { Mail, Code } from "lucide-react";
 import { GithubIcon, LinkedinIcon, InstagramIcon } from "../components/SocialIcons";
 import Button from "../components/Button";
 import Badge from "../components/Badge";
@@ -7,31 +7,29 @@ import { personalInfo } from "../data/personalInfo";
 import sujanPhoto from "../assets/sujan.jpg";
 
 export default function Hero() {
-  // Framer Motion staggered child reveal configurations
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.1,
+        staggerChildren: 0.15,
+        delayChildren: 0.2,
       }
     }
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
+    hidden: { opacity: 0, y: 20 },
     visible: {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.8,
-        ease: [0.16, 1, 0.3, 1] // Custom premium easeOut cubic curve
+        duration: 1.2,
+        ease: [0.16, 1, 0.3, 1]
       }
     }
   };
 
-  // Social icon details
   const socialIcons = [
     { icon: GithubIcon, href: personalInfo.socials.github, label: "GitHub" },
     { icon: LinkedinIcon, href: personalInfo.socials.linkedin, label: "LinkedIn" },
@@ -42,63 +40,79 @@ export default function Hero() {
   return (
     <section 
       id="home" 
-      className="min-h-screen relative flex items-center justify-center pt-28 pb-20 md:pt-36 overflow-hidden bg-grid-pattern"
+      className="min-h-screen relative flex items-center pt-28 pb-20 md:pt-36 overflow-hidden bg-grid-pattern bg-brand-cream"
     >
-      {/* Heavy Radial Glowing backgrounds behind components */}
-      <div className="absolute top-[20%] left-[10%] w-[350px] md:w-[600px] h-[350px] md:h-[600px] radial-glow-indigo pointer-events-none" />
-      <div className="absolute bottom-[10%] right-[10%] w-[350px] md:w-[600px] h-[350px] md:h-[600px] radial-glow-violet pointer-events-none" />
+      {/* Soft warm radial-gradient glow */}
+      <div className="absolute -top-[10%] -right-[10%] w-[500px] md:w-[800px] h-[500px] md:h-[800px] radial-glow-amber pointer-events-none opacity-80" />
 
       <div className="max-w-7xl mx-auto px-6 md:px-8 w-full z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           
           {/* Left Text Column */}
           <motion.div
             variants={containerVariants}
             initial="hidden"
             animate="visible"
-            className="lg:col-span-7 space-y-6 text-left"
+            className="lg:col-span-7 space-y-8 text-left"
           >
-            {/* Availability Pill */}
+            {/* Availability Badge */}
             <motion.div variants={itemVariants} className="inline-block">
-              <Badge text="Available for Freelance & Full-Time Roles" variant="success" />
+              <Badge text="Available for Freelance & Full-Time" variant="success" />
             </motion.div>
 
-            {/* Main Headline */}
-            <motion.h1 
-              variants={itemVariants} 
-              className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight leading-[1.1] text-brand-textPrimary font-sans"
-            >
-              I Build Fast, Scalable & <br />
-              <span className="text-gradient-accent">Production-Ready Web Apps</span>
-            </motion.h1>
+            {/* Headline with sequential line reveal */}
+            <div className="space-y-1 font-display">
+              <h1 className="text-[38px] sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.1] text-brand-ink">
+                <span className="block overflow-hidden py-1">
+                  <motion.span className="block" initial={{ y: "100%" }} animate={{ y: 0 }} transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}>
+                    I Build Fast,
+                  </motion.span>
+                </span>
+                <span className="block overflow-hidden py-1">
+                  <motion.span className="block" initial={{ y: "100%" }} animate={{ y: 0 }} transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}>
+                    Scalable &amp;
+                  </motion.span>
+                </span>
+                <span className="block overflow-hidden py-1 text-brand-amber">
+                  <motion.span className="block" initial={{ y: "100%" }} animate={{ y: 0 }} transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}>
+                    Production-Ready Apps
+                  </motion.span>
+                </span>
+              </h1>
+            </div>
 
             {/* Subheadline description */}
             <motion.p 
               variants={itemVariants} 
-              className="text-brand-textSecondary text-base sm:text-lg md:text-xl leading-relaxed max-w-2xl"
+              className="text-brand-inkSoft text-base sm:text-lg md:text-xl leading-relaxed max-w-xl font-sans"
             >
               {personalInfo.heroIntro}
             </motion.p>
 
-            {/* Credential pill */}
+            {/* Credentials */}
             <motion.div variants={itemVariants} className="flex flex-wrap gap-3 items-center">
               <Badge text={personalInfo.credentialBadge} variant="gold" icon={Code} />
             </motion.div>
 
-            {/* Call to Actions */}
-            <motion.div variants={itemVariants} className="flex flex-wrap gap-4 pt-2">
-              <Button href="#projects" variant="primary" size="md" icon={ArrowRight}>
-                View My Work
+            {/* Action buttons */}
+            <motion.div variants={itemVariants} className="flex items-center gap-8 pt-2">
+              <Button href="#projects" variant="primary" size="md">
+                View Selected Work
               </Button>
-              <Button href="/resume.pdf" download target="_blank" variant="secondary" size="md" icon={Download} iconPosition="left">
+              <a 
+                href="/resume.pdf" 
+                download 
+                target="_blank" 
+                className="font-sans text-[11px] font-bold tracking-[0.15em] uppercase text-brand-inkSoft hover:text-brand-amber transition-colors underline underline-offset-8 decoration-brand-line hover:decoration-brand-amber"
+              >
                 Download CV
-              </Button>
+              </a>
             </motion.div>
 
             {/* Social Icons row */}
-            <motion.div variants={itemVariants} className="flex items-center gap-4 pt-4 border-t border-brand-border/40 w-max">
-              <span className="text-xs font-semibold text-brand-textMuted uppercase tracking-wider">Connect:</span>
-              <div className="flex gap-2">
+            <motion.div variants={itemVariants} className="flex items-center gap-4 pt-6 border-t border-brand-line max-w-sm">
+              <span className="text-[10px] font-bold text-brand-inkMuted uppercase tracking-widest">Connect:</span>
+              <div className="flex gap-4">
                 {socialIcons.map((social, idx) => (
                   <a
                     key={idx}
@@ -106,7 +120,7 @@ export default function Hero() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={social.label}
-                    className="w-9 h-9 rounded-xl border border-brand-border bg-brand-card hover:bg-brand-accent/10 hover:border-brand-accent/50 text-brand-textSecondary hover:text-brand-accent transition-all duration-300 flex items-center justify-center focus:outline-none"
+                    className="text-brand-inkMuted hover:text-brand-amber transition-colors duration-300"
                   >
                     <social.icon size={16} />
                   </a>
@@ -115,88 +129,62 @@ export default function Hero() {
             </motion.div>
           </motion.div>
 
-          {/* Right Visual Image Column */}
-          <div className="lg:col-span-5 flex justify-center items-center relative">
+          {/* Right Visual Image Column - Cinematic Portrait */}
+          <div className="lg:col-span-5 flex justify-center lg:justify-end items-center relative">
             <motion.div
-              initial={{ opacity: 0, scale: 0.85 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-              className="w-72 h-72 sm:w-80 sm:h-80 md:w-96 md:h-96 relative flex items-center justify-center"
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
+              className="w-72 h-96 sm:w-80 sm:h-[420px] md:w-96 md:h-[480px] relative overflow-hidden rounded-t-[120px] rounded-b-[40px] border border-brand-line shadow-xl bg-brand-paper"
             >
-              {/* Outer decorative spinning ring */}
-              <div className="absolute inset-0 rounded-full border border-dashed border-indigo-500/20 animate-spin-slow" />
-              
-              {/* Middle animated pulsing ring */}
-              <div className="absolute inset-4 rounded-full border border-brand-border/60 animate-pulse-glow" />
+              {/* Wipe-in image reveal wrapper */}
+              <motion.div
+                initial={{ clipPath: "inset(100% 0% 0% 0%)" }}
+                animate={{ clipPath: "inset(0% 0% 0% 0%)" }}
+                transition={{ duration: 1.8, ease: [0.16, 1, 0.3, 1], delay: 0.3 }}
+                className="w-full h-full relative"
+              >
+                {/* Underlay / base color */}
+                <div className="absolute inset-0 bg-[#EADCC9]" />
 
-              {/* Glowing background behind core */}
-              <div className="absolute inset-10 rounded-full bg-gradient-to-tr from-brand-accent/30 to-brand-violet/30 blur-2xl animate-pulse" />
-
-              {/* Core Avatar Card */}
-              <div className="w-56 h-56 sm:w-64 sm:h-64 md:w-80 md:h-80 rounded-full glass-card border-gradient-glow flex items-center justify-center shadow-2xl relative z-10 overflow-hidden group">
+                {/* Duotone graded image */}
                 <img
                   src={sujanPhoto}
                   alt={personalInfo.name}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 select-none pointer-events-none"
+                  className="w-full h-full object-cover grayscale mix-blend-luminosity opacity-85 contrast-[1.1] transition-transform duration-700 hover:scale-105 select-none pointer-events-none"
                 />
-                {/* Thin theme overlay */}
-                <div className="absolute inset-0 bg-indigo-950/10 mix-blend-color-burn" />
-              </div>
 
-              {/* Floating Tech Stack Chip 1 (React) */}
-              <motion.div
-                animate={{ y: [0, -10, 0] }}
-                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute top-[10%] left-[5%] glass-card p-3 rounded-2xl border border-indigo-500/20 shadow-lg flex items-center gap-2 z-20 hover:border-brand-accent/50 transition-colors cursor-default"
-              >
-                <Code className="text-indigo-400" size={16} />
-                <span className="text-xs font-semibold text-brand-textPrimary">React</span>
-              </motion.div>
+                {/* Graded highlight overlays */}
+                <div className="absolute inset-0 bg-brand-amber/15 mix-blend-color-dodge pointer-events-none" />
+                <div className="absolute inset-0 bg-[#ECE0D0]/30 mix-blend-color-burn pointer-events-none" />
 
-              {/* Floating Tech Stack Chip 2 (Node) */}
-              <motion.div
-                animate={{ y: [0, 10, 0] }}
-                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-                className="absolute bottom-[20%] left-[-5%] glass-card p-3 rounded-2xl border border-emerald-500/20 shadow-lg flex items-center gap-2 z-20 hover:border-brand-emerald/50 transition-colors cursor-default"
-              >
-                <Server className="text-emerald-400" size={16} />
-                <span className="text-xs font-semibold text-brand-textPrimary">Node.js</span>
-              </motion.div>
-
-              {/* Floating Tech Stack Chip 3 (MongoDB) */}
-              <motion.div
-                animate={{ y: [0, -8, 0] }}
-                transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut", delay: 0.2 }}
-                className="absolute top-[40%] right-[-8%] glass-card p-3 rounded-2xl border border-violet-500/20 shadow-lg flex items-center gap-2 z-20 hover:border-brand-violet/50 transition-colors cursor-default"
-              >
-                <Database className="text-violet-400" size={16} />
-                <span className="text-xs font-semibold text-brand-textPrimary">MongoDB</span>
+                {/* Soft Vignette overlay */}
+                <div className="absolute inset-0 shadow-[inset_0_0_60px_rgba(21,19,15,0.35)] pointer-events-none" />
               </motion.div>
             </motion.div>
           </div>
 
         </div>
 
-        {/* Animated scroll down indicator */}
-        <motion.div 
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1, duration: 0.8 }}
-          className="absolute bottom-6 left-0 right-0 mx-auto w-max flex flex-col items-center gap-2 text-brand-textMuted hover:text-brand-textPrimary transition-colors z-10"
-        >
-          <a href="#about" aria-label="Scroll Down" className="flex flex-col items-center gap-2 select-none group focus:outline-none">
-            <span className="text-[10px] uppercase font-bold tracking-widest group-hover:text-brand-accent transition-colors">
-              Explore Portfolio
-            </span>
-            <div className="w-6 h-10 rounded-full border-2 border-brand-border flex items-start justify-center p-1.5 group-hover:border-brand-accent transition-colors">
-              <motion.div 
-                animate={{ y: [0, 10, 0] }}
-                transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-                className="w-1.5 h-1.5 rounded-full bg-brand-textSecondary group-hover:bg-brand-accent transition-colors"
-              />
-            </div>
-          </a>
-        </motion.div>
+        {/* Animated scroll down indicator - film reel vertical line */}
+        <div className="hidden md:flex absolute bottom-8 left-6 md:left-8 flex-col items-start gap-3 z-10 select-none pointer-events-none">
+          <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-brand-inkMuted">
+            Scroll to Explore
+          </span>
+          <div className="h-16 w-[1px] bg-brand-line relative overflow-hidden">
+            <motion.div 
+              animate={{ 
+                top: ["-100%", "100%"] 
+              }}
+              transition={{ 
+                duration: 2.2, 
+                repeat: Infinity, 
+                ease: "easeInOut" 
+              }}
+              className="absolute left-0 w-full h-8 bg-brand-amber"
+            />
+          </div>
+        </div>
 
       </div>
     </section>

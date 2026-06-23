@@ -62,7 +62,7 @@ export default function CustomCursor() {
     <>
       {/* Small Core Dot */}
       <motion.div
-        className="fixed top-0 left-0 w-1.5 h-1.5 bg-indigo-400 rounded-full pointer-events-none z-[9999] mix-blend-difference hidden md:block"
+        className="fixed top-0 left-0 w-1.5 h-1.5 bg-[#C2541B] rounded-full pointer-events-none z-[9999] hidden md:block"
         style={{
           x: cursorXSpring,
           y: cursorYSpring,
@@ -72,13 +72,13 @@ export default function CustomCursor() {
       />
       {/* Large Ambient Glow Follower */}
       <motion.div
-        className="fixed top-0 left-0 rounded-full pointer-events-none z-[9998] border border-indigo-400/35 bg-indigo-500/5 hidden md:block"
+        className="fixed top-0 left-0 rounded-full pointer-events-none z-[9998] border border-[#C2541B]/30 bg-[#C2541B]/5 hidden md:block"
         animate={{
-          width: isHovered ? 55 : 24,
-          height: isHovered ? 55 : 24,
+          width: isHovered ? 50 : 22,
+          height: isHovered ? 50 : 22,
           opacity: 1,
-          borderColor: isHovered ? "rgba(139, 92, 246, 0.65)" : "rgba(99, 102, 241, 0.35)",
-          backgroundColor: isHovered ? "rgba(139, 92, 246, 0.08)" : "rgba(99, 102, 241, 0.02)"
+          borderColor: isHovered ? "rgba(194, 84, 27, 0.8)" : "rgba(194, 84, 27, 0.3)",
+          backgroundColor: isHovered ? "rgba(194, 84, 27, 0.1)" : "rgba(194, 84, 27, 0.02)"
         }}
         transition={{ type: "spring", stiffness: 350, damping: 25 }}
         style={{

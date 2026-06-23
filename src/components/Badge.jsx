@@ -8,10 +8,10 @@ export default function Badge({
   className = "",
 }) {
   const badgeColors = {
-    success: "bg-emerald-500/10 border-emerald-500/20 text-emerald-400",
-    info: "bg-indigo-500/10 border-indigo-500/20 text-indigo-400",
-    warning: "bg-amber-500/10 border-amber-500/20 text-amber-400",
-    gold: "bg-brand-gold/10 border-brand-gold/25 text-brand-gold",
+    success: "bg-brand-amberLight/50 border-brand-amber/20 text-brand-amberDeep",
+    info: "bg-brand-paper border-brand-line text-brand-inkSoft",
+    warning: "bg-brand-amberLight/40 border-brand-amber/20 text-brand-amber",
+    gold: "bg-brand-amberLight/60 border-brand-amber/25 text-brand-amberDeep",
   };
 
   return (
@@ -20,15 +20,15 @@ export default function Badge({
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
       className={cn(
-        "inline-flex items-center gap-1.5 px-3 py-1 text-xs font-medium rounded-full border shadow-sm select-none backdrop-blur-sm",
+        "inline-flex items-center gap-1.5 px-3 py-1 text-xs font-semibold rounded-full border shadow-sm select-none backdrop-blur-sm font-sans tracking-wide",
         badgeColors[variant],
         className
       )}
     >
       {variant === "success" && (
         <span className="relative flex h-1.5 w-1.5">
-          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-          <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-500"></span>
+          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-amber opacity-75"></span>
+          <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-brand-amber"></span>
         </span>
       )}
       {Icon && <Icon className="shrink-0" size={12} />}

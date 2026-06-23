@@ -1,8 +1,7 @@
 import { useRef } from "react";
 import { motion, useScroll, useSpring } from "framer-motion";
-import { Briefcase, GraduationCap, Calendar, MapPin, CheckCircle } from "lucide-react";
+import { Calendar, MapPin, CheckCircle } from "lucide-react";
 import { timelineData } from "../data/timeline";
-import GlassCard from "../components/GlassCard";
 
 export default function Timeline() {
   const sectionRef = useRef(null);
@@ -20,106 +19,119 @@ export default function Timeline() {
   });
 
   return (
-    <section id="timeline" ref={sectionRef} className="py-24 relative overflow-hidden bg-brand-dark">
-      {/* Background ambient light */}
-      <div className="absolute top-[20%] left-[5%] w-[450px] h-[450px] radial-glow-indigo opacity-25 pointer-events-none" />
+    <section id="timeline" ref={sectionRef} className="py-28 relative overflow-hidden bg-brand-cream">
+      {/* Background warm light glow */}
+      <div className="absolute top-[20%] right-[-10%] w-[450px] h-[450px] radial-glow-amber opacity-40 pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10">
         
-        {/* Section Header */}
-        <div className="mb-16 max-w-3xl">
-          <span className="text-xs font-bold text-brand-accent tracking-widest uppercase mb-2 block">
-            05 . Career Map
-          </span>
-          <h2 className="text-3xl md:text-4xl font-extrabold text-brand-textPrimary tracking-tight">
-            Work History & Education
-          </h2>
-          <div className="w-16 h-1 bg-gradient-to-r from-brand-accent to-brand-violet rounded-full mt-4" />
+        {/* Chapter Header */}
+        <div className="mb-20">
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+            className="flex flex-col md:flex-row md:items-baseline gap-2 md:gap-6 border-b border-brand-line pb-6"
+          >
+            <span className="font-display italic text-2xl md:text-3xl text-brand-amber">
+              05
+            </span>
+            <span className="font-sans text-[10px] font-bold tracking-[0.2em] uppercase text-brand-inkMuted">
+              — Career Map
+            </span>
+            <h2 className="text-4xl md:text-5xl font-bold font-display text-brand-ink md:ml-auto mt-2 md:mt-0">
+              Timeline.
+            </h2>
+          </motion.div>
         </div>
 
         {/* Timeline Container */}
         <div className="relative max-w-4xl mx-auto pl-10 md:pl-16">
           
-          {/* Animated Vertical Line track */}
+          {/* Animated Vertical Line track (Film strip reel line) */}
           <motion.div
             style={{ scaleY }}
-            className="absolute top-4 bottom-4 left-4 md:left-8 w-0.5 bg-gradient-to-b from-brand-accent via-brand-violet to-brand-emerald origin-top rounded-full z-0"
+            className="absolute top-4 bottom-4 left-4 md:left-8 w-[1px] bg-brand-amber origin-top rounded-full z-0"
           />
 
           {/* Secondary background line track */}
-          <div className="absolute top-4 bottom-4 left-4 md:left-8 w-0.5 bg-white/5 rounded-full z-0" />
+          <div className="absolute top-4 bottom-4 left-4 md:left-8 w-[1px] bg-brand-line rounded-full z-0" />
 
           {/* Timeline Nodes list */}
           <div className="space-y-12">
             {timelineData.map((item, idx) => {
-              const IsWork = item.type === "experience";
-              const Icon = IsWork ? Briefcase : GraduationCap;
-              
               return (
                 <div key={item.id} className="relative z-10">
-                  {/* Left Side Icon Bullet Node */}
+                  
+                  {/* Square Film-Frame marker node */}
                   <motion.div
                     initial={{ scale: 0.7, opacity: 0 }}
                     whileInView={{ scale: 1, opacity: 1 }}
                     viewport={{ once: true, margin: "-100px" }}
-                    transition={{ type: "spring", damping: 15, stiffness: 200, delay: idx * 0.1 }}
-                    className={`absolute -left-10 md:-left-16 w-8 h-8 md:w-10 md:h-10 rounded-xl border flex items-center justify-center translate-x-[-50%] translate-y-[10%] shadow-lg ${
-                      IsWork 
-                        ? "bg-indigo-500/10 border-indigo-500/30 text-indigo-400" 
-                        : "bg-emerald-500/10 border-emerald-500/30 text-emerald-400"
-                    }`}
+                    transition={{ duration: 0.8, delay: idx * 0.1, ease: [0.16, 1, 0.3, 1] }}
+                    className="absolute -left-[30px] md:-left-[46px] w-[20px] h-[24px] border border-brand-ink bg-brand-cream flex flex-col justify-between p-0.5 select-none shrink-0 translate-y-[8px]"
                   >
-                    <Icon size={16} className="md:w-5 md:h-5" />
+                    <div className="flex justify-between w-full h-[2px]">
+                      <div className="w-[2px] h-[2px] bg-brand-ink/50" />
+                      <div className="w-[2px] h-[2px] bg-brand-ink/50" />
+                    </div>
+                    <div className="w-1.5 h-1.5 bg-brand-amber mx-auto rounded-none" />
+                    <div className="flex justify-between w-full h-[2px]">
+                      <div className="w-[2px] h-[2px] bg-brand-ink/50" />
+                      <div className="w-[2px] h-[2px] bg-brand-ink/50" />
+                    </div>
                   </motion.div>
 
-                  {/* Right Side Content Card Wrapper */}
-                  <GlassCard
-                    animateOnScroll={true}
-                    delay={idx * 0.15}
-                    hoverEffect={true}
-                    className="p-6 md:p-8"
+                  {/* Content Container (Editorial style) */}
+                  <motion.div
+                    initial={{ opacity: 0, x: 20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true, margin: "-100px" }}
+                    transition={{ duration: 1, delay: idx * 0.1, ease: [0.16, 1, 0.3, 1] }}
+                    className="p-6 md:p-8 bg-brand-paper/40 border border-brand-line hover:border-brand-amber transition-all duration-300 rounded-xl space-y-4"
                   >
-                    {/* Header grid */}
-                    <div className="flex flex-col md:flex-row md:items-center justify-between gap-2 mb-4">
+                    {/* Header info */}
+                    <div className="flex flex-col md:flex-row md:items-center justify-between gap-2">
                       <div>
-                        <h3 className="text-lg md:text-xl font-bold text-brand-textPrimary font-sans">
+                        <h3 className="text-lg md:text-xl font-bold text-brand-ink font-display leading-snug">
                           {item.role}
                         </h3>
-                        <p className="text-brand-textSecondary text-sm font-semibold mt-0.5">
+                        <p className="text-brand-inkSoft text-sm font-semibold mt-0.5">
                           {item.company}
                         </p>
                       </div>
                       
-                      {/* Timeframe pill badge */}
-                      <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-white/5 border border-brand-border text-brand-textSecondary w-max shrink-0">
-                        <Calendar size={12} className="text-brand-accent" />
+                      {/* Duration Tag */}
+                      <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-brand-amberLight/35 border border-brand-amber/10 text-brand-amberDeep w-max shrink-0 font-sans">
+                        <Calendar size={12} className="text-brand-amber" />
                         {item.duration}
                       </span>
                     </div>
 
                     {/* Metadata details (Location) */}
-                    <div className="flex items-center gap-1 text-brand-textMuted text-xs mb-4">
-                      <MapPin size={12} />
+                    <div className="flex items-center gap-1 text-brand-inkMuted text-xs">
+                      <MapPin size={12} className="text-brand-inkMuted" />
                       <span>{item.location}</span>
                     </div>
 
-                    {/* Description Paragraph */}
-                    <p className="text-brand-textSecondary text-sm leading-relaxed mb-4">
+                    {/* Description */}
+                    <p className="text-brand-inkSoft text-sm leading-relaxed font-sans">
                       {item.description}
                     </p>
 
                     {/* Bullets lists */}
                     {item.bullets && item.bullets.length > 0 && (
-                      <ul className="space-y-2 mt-4 border-t border-brand-border/40 pt-4">
+                      <ul className="space-y-2 mt-4 border-t border-brand-line pt-4 font-sans">
                         {item.bullets.map((bullet, bIdx) => (
-                          <li key={bIdx} className="flex gap-2.5 items-start text-xs md:text-sm text-brand-textSecondary">
-                            <CheckCircle size={14} className="text-brand-accent shrink-0 mt-0.5" />
+                          <li key={bIdx} className="flex gap-2.5 items-start text-xs md:text-sm text-brand-inkSoft">
+                            <CheckCircle size={14} className="text-brand-amber shrink-0 mt-0.5" />
                             <span>{bullet}</span>
                           </li>
                         ))}
                       </ul>
                     )}
-                  </GlassCard>
+                  </motion.div>
 
                 </div>
               );

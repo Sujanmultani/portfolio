@@ -1,40 +1,35 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronLeft, ChevronRight, Quote, Star } from "lucide-react";
-import GlassCard from "../components/GlassCard";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { testimonials } from "../data/testimonials";
 
 export default function Testimonials() {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [direction, setDirection] = useState(0); // -1 = left, 1 = right
-  const timerRef = useRef(null);
+  const TimerRef = useRef(null);
 
   const slidePrev = useCallback(() => {
-    setDirection(-1);
     setCurrentIndex((prev) => (prev === 0 ? testimonials.length - 1 : prev - 1));
   }, []);
 
   const slideNext = useCallback(() => {
-    setDirection(1);
     setCurrentIndex((prev) => (prev === testimonials.length - 1 ? 0 : prev + 1));
   }, []);
 
   const setSlide = useCallback((idx) => {
-    setDirection(idx > currentIndex ? 1 : -1);
     setCurrentIndex(idx);
-  }, [currentIndex]);
+  }, []);
 
   const stopAutoplay = useCallback(() => {
-    if (timerRef.current) {
-      clearInterval(timerRef.current);
+    if (TimerRef.current) {
+      clearInterval(TimerRef.current);
     }
   }, []);
 
   const startAutoplay = useCallback(() => {
     stopAutoplay();
-    timerRef.current = setInterval(() => {
+    TimerRef.current = setInterval(() => {
       slideNext();
-    }, 6000);
+    }, 7000);
   }, [stopAutoplay, slideNext]);
 
   useEffect(() => {
@@ -42,139 +37,124 @@ export default function Testimonials() {
     return () => stopAutoplay();
   }, [startAutoplay, stopAutoplay]);
 
-  // Framer motion variants for sliding animations
-  const slideVariants = {
-    enter: (dir) => ({
-      x: dir > 0 ? 120 : -120,
+  // Editorial slow crossfade variants (800ms+) with no bounce/slide
+  const fadeVariants = {
+    enter: {
       opacity: 0
-    }),
+    },
     center: {
-      x: 0,
       opacity: 1,
       transition: {
-        x: { type: "spring", stiffness: 300, damping: 30 },
-        opacity: { duration: 0.4 }
+        opacity: { duration: 0.8 }
       }
     },
-    exit: (dir) => ({
-      x: dir < 0 ? 120 : -120,
+    exit: {
       opacity: 0,
       transition: {
-        x: { type: "spring", stiffness: 300, damping: 30 },
-        opacity: { duration: 0.3 }
+        opacity: { duration: 0.6 }
       }
-    })
+    }
   };
 
   const activeReview = testimonials[currentIndex];
 
   return (
-    <section id="testimonials" className="py-24 relative overflow-hidden bg-brand-darker bg-dots-pattern">
-      {/* Background glow shadow */}
-      <div className="absolute bottom-[20%] right-[15%] w-[450px] h-[450px] radial-glow-indigo opacity-25 pointer-events-none" />
+    <section id="testimonials" className="py-28 relative overflow-hidden bg-brand-cream border-b border-brand-line">
+      {/* Background warm light glow */}
+      <div className="absolute top-[20%] right-[-10%] w-[500px] h-[500px] radial-glow-amber opacity-40 pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10">
         
-        {/* Section Header */}
-        <div className="mb-16 text-center max-w-3xl mx-auto">
-          <span className="text-xs font-bold text-brand-accent tracking-widest uppercase mb-2 block">
-            06 . Client Feedback
-          </span>
-          <h2 className="text-3xl md:text-4xl font-extrabold text-brand-textPrimary tracking-tight font-sans">
-            Client & Colleague Testimonials
-          </h2>
-          <div className="w-16 h-1 bg-gradient-to-r from-brand-accent to-brand-violet rounded-full mt-4 mx-auto" />
+        {/* Chapter Header */}
+        <div className="mb-20">
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+            className="flex flex-col md:flex-row md:items-baseline gap-2 md:gap-6 border-b border-brand-line pb-6"
+          >
+            <span className="font-display italic text-2xl md:text-3xl text-brand-amber">
+              06
+            </span>
+            <span className="font-sans text-[10px] font-bold tracking-[0.2em] uppercase text-brand-inkMuted">
+              — Client Feedback
+            </span>
+            <h2 className="text-4xl md:text-5xl font-bold font-display text-brand-ink md:ml-auto mt-2 md:mt-0">
+              Testimonials.
+            </h2>
+          </motion.div>
         </div>
 
-        {/* Testimonials Slider area */}
+        {/* Testimonials Slider Area - cardless, centered pull-quote */}
         <div 
           className="max-w-4xl mx-auto relative px-4 sm:px-8 py-4"
           onMouseEnter={stopAutoplay}
           onMouseLeave={startAutoplay}
         >
-          <div className="overflow-hidden min-h-[380px] sm:min-h-[300px] flex items-center justify-center relative">
-            <AnimatePresence initial={false} custom={direction} mode="wait">
+          <div className="overflow-hidden min-h-[360px] sm:min-h-[280px] flex items-center justify-center relative">
+            <AnimatePresence initial={false} mode="wait">
               <motion.div
                 key={currentIndex}
-                custom={direction}
-                variants={slideVariants}
+                variants={fadeVariants}
                 initial="enter"
                 animate="center"
                 exit="exit"
-                className="w-full"
+                className="w-full text-center space-y-6"
               >
-                <GlassCard hoverEffect={false} animateOnScroll={false} className="p-8 sm:p-12 relative">
-                  {/* Watermark Quote Icon */}
-                  <Quote className="absolute right-8 bottom-8 text-brand-accent/5 w-24 h-24 pointer-events-none select-none" />
-                  
-                  <div className="flex flex-col gap-6">
-                    {/* Stars Rating row */}
-                    {activeReview.rating && (
-                      <div className="flex gap-1">
-                        {[...Array(activeReview.rating)].map((_, i) => (
-                          <Star key={i} size={16} className="fill-brand-gold text-brand-gold" />
-                        ))}
-                      </div>
-                    )}
+                {/* Large serif italic pull-quote */}
+                <blockquote className="font-display italic text-2xl sm:text-3xl md:text-4xl text-brand-ink leading-[1.4] max-w-3xl mx-auto">
+                  "{activeReview.quote}"
+                </blockquote>
 
-                    {/* Quote text */}
-                    <blockquote className="text-brand-textPrimary text-base sm:text-lg md:text-xl font-sans italic leading-relaxed">
-                      "{activeReview.quote}"
-                    </blockquote>
+                {/* Thin dividing element */}
+                <div className="w-12 h-[1px] bg-brand-amber mx-auto" />
 
-                    <hr className="border-brand-border/40" />
-
-                    {/* Client info profile */}
-                    <div className="flex items-center gap-4">
-                      <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-indigo-500/20 to-brand-violet/20 border border-indigo-500/30 flex items-center justify-center text-brand-textPrimary font-bold text-sm tracking-wide select-none shrink-0">
-                        {activeReview.initials}
-                      </div>
-                      <div>
-                        <cite className="not-italic text-sm font-bold text-brand-textPrimary font-sans block">
-                          {activeReview.name}
-                        </cite>
-                        <span className="text-xs text-brand-textMuted font-medium block mt-0.5">
-                          {activeReview.role} at <span className="text-indigo-400">{activeReview.company}</span>
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </GlassCard>
+                {/* Author Credentials */}
+                <div className="space-y-1">
+                  <cite className="not-italic text-sm font-bold text-brand-ink font-sans uppercase tracking-[0.2em] block">
+                    {activeReview.name}
+                  </cite>
+                  <span className="text-xs text-brand-inkMuted font-sans block">
+                    {activeReview.role} &mdash; <span className="text-brand-amber font-semibold">{activeReview.company}</span>
+                  </span>
+                </div>
               </motion.div>
             </AnimatePresence>
           </div>
 
-          {/* Navigation Controls buttons */}
-          <div className="flex justify-between items-center gap-4 mt-8">
-            {/* Dots indicators */}
+          {/* Minimal controls below */}
+          <div className="flex justify-between items-center gap-4 mt-8 border-t border-brand-line/50 pt-6">
+            
+            {/* Dots directory indicators */}
             <div className="flex gap-2">
               {testimonials.map((_, dotIdx) => (
                 <button
                   key={dotIdx}
                   onClick={() => setSlide(dotIdx)}
                   aria-label={`Go to slide ${dotIdx + 1}`}
-                  className={`h-2 rounded-full transition-all duration-300 focus:outline-none ${
-                    dotIdx === currentIndex ? "w-6 bg-brand-accent" : "w-2 bg-brand-border"
+                  className={`h-1.5 rounded-full transition-all duration-500 focus:outline-none ${
+                    dotIdx === currentIndex ? "w-6 bg-brand-amber" : "w-1.5 bg-brand-line hover:bg-brand-inkMuted"
                   }`}
                 />
               ))}
             </div>
 
-            {/* Arrow controllers */}
+            {/* Micro buttons */}
             <div className="flex gap-2">
               <button
                 onClick={slidePrev}
                 aria-label="Previous Testimonial"
-                className="w-10 h-10 rounded-xl border border-brand-border bg-brand-card hover:bg-white/5 text-brand-textSecondary hover:text-brand-textPrimary transition-colors flex items-center justify-center focus:outline-none"
+                className="w-9 h-9 rounded-xl border border-brand-line bg-brand-paper hover:bg-brand-cream text-brand-inkSoft hover:text-brand-ink transition-colors flex items-center justify-center focus:outline-none"
               >
-                <ChevronLeft size={20} />
+                <ChevronLeft size={16} />
               </button>
               <button
                 onClick={slideNext}
                 aria-label="Next Testimonial"
-                className="w-10 h-10 rounded-xl border border-brand-border bg-brand-card hover:bg-white/5 text-brand-textSecondary hover:text-brand-textPrimary transition-colors flex items-center justify-center focus:outline-none"
+                className="w-9 h-9 rounded-xl border border-brand-line bg-brand-paper hover:bg-brand-cream text-brand-inkSoft hover:text-brand-ink transition-colors flex items-center justify-center focus:outline-none"
               >
-                <ChevronRight size={20} />
+                <ChevronRight size={16} />
               </button>
             </div>
           </div>
