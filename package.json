@@ -1,0 +1,37 @@
+{
+  "name": "portfoliyo",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "seed": "npx tsx src/scripts/seed.ts"
+  },
+  "dependencies": {
+    "clsx": "^2.1.1",
+    "dotenv": "^16.4.5",
+    "framer-motion": "^11.3.28",
+    "gsap": "^3.12.5",
+    "lenis": "^1.1.9",
+    "lucide-react": "^0.427.0",
+    "mongoose": "^8.5.3",
+    "next": "14.2.5",
+    "nodemailer": "^6.9.14",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "tailwind-merge": "^2.5.2"
+  },
+  "devDependencies": {
+    "@types/node": "20.19.43",
+    "@types/nodemailer": "^6.4.15",
+    "@types/react": "18.3.31",
+    "@types/react-dom": "^18.3.0",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.41",
+    "tailwindcss": "^3.4.10",
+    "tsx": "^4.17.0",
+    "typescript": "5.9.3"
+  }
+}
