@@ -153,10 +153,11 @@ export function IDCard({ pinTarget }: IDCardProps) {
           {/* Profile Photo (Portrait Crop) */}
           <div className="relative my-3 aspect-[4/5] w-full rounded-lg overflow-hidden border border-line bg-bg">
             <Image
-              src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=800&auto=format&fit=crop"
+              src="/profile.jpg"
               alt="Developer Profile Portrait"
               fill
-              className="object-cover object-top grayscale contrast-125 hover:grayscale-0 transition-all duration-500"
+              unoptimized
+              className="object-cover object-top hover:scale-105 transition-transform duration-500"
               priority
             />
             <div className="absolute bottom-2 left-2 rounded bg-bg/90 backdrop-blur border border-line px-2 py-0.5 text-[9px] font-mono text-text">

@@ -85,7 +85,7 @@ export function Navbar() {
 
           <Link
             href="/contact"
-            className="group flex items-center gap-1.5 rounded-none border border-accent bg-accent/10 px-4 py-2 text-xs font-semibold uppercase tracking-wider text-text transition-all duration-300 hover:bg-accent hover:text-bg"
+            className="group flex items-center gap-1.5 rounded-none border border-accent bg-accent/10 px-4 py-2 text-xs font-semibold uppercase tracking-wider text-text transition-all duration-300 hover:bg-accent hover:text-white"
           >
             <span>Let&apos;s Talk</span>
             <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />

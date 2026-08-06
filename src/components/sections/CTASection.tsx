@@ -22,7 +22,7 @@ export function CTASection() {
         <div className="pt-4 flex justify-center">
           <Link
             href="/contact"
-            className="group flex items-center gap-3 border-2 border-accent bg-accent px-8 py-4 font-mono text-sm font-bold uppercase tracking-widest text-bg transition-all duration-300 hover:bg-accent-hover hover:border-accent-hover shadow-2xl hover:scale-105"
+            className="group flex items-center gap-3 border-2 border-accent bg-accent px-8 py-4 font-mono text-sm font-bold uppercase tracking-widest text-white transition-all duration-300 hover:bg-accent-hover hover:border-accent-hover shadow-2xl hover:scale-105"
           >
             <span>Start A Project Inquiry</span>
             <ArrowUpRight className="h-5 w-5 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />

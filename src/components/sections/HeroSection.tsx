@@ -43,7 +43,7 @@ export function HeroSection() {
           <div className="flex flex-wrap items-center gap-4 pt-2">
             <Link
               href="/projects"
-              className="group flex items-center gap-3 border-2 border-accent bg-accent px-6 py-3.5 text-sm font-semibold uppercase tracking-wider text-bg transition-all duration-300 hover:bg-accent-hover hover:border-accent-hover shadow-lg"
+              className="group flex items-center gap-3 border-2 border-accent bg-accent px-6 py-3.5 text-sm font-semibold uppercase tracking-wider text-white transition-all duration-300 hover:bg-accent-hover hover:border-accent-hover shadow-lg"
             >
               <FolderGit2 className="h-4 w-4" />
               <span>Explore Projects</span>

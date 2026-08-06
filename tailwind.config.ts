@@ -10,13 +10,15 @@ const config: Config = {
     extend: {
       colors: {
         bg: "#0B0B0C",
-        "bg-elevated": "#141416",
-        text: "#F4F1EA",
-        "text-muted": "#9C9A94",
-        accent: "#C1502E",
-        "accent-hover": "#D96540",
-        line: "#26262A",
-        success: "#4C7A5A",
+        "bg-elevated": "#18181B",
+        "bg-secondary": "#202024",
+        line: "#2B2B31",
+        text: "#F5F2EC",
+        "text-muted": "#B3AEA6",
+        accent: "#E76F51",
+        "accent-hover": "#F28463",
+        success: "#2FBF71",
+        error: "#E5484D",
       },
       fontFamily: {
         display: ["var(--font-display)", "Georgia", "serif"],
