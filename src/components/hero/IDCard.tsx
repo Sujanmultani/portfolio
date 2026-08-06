@@ -188,72 +188,31 @@ export function IDCard({ pinTarget }: IDCardProps) {
         </div>
 
         {/* BACK FACE (Pre-rotated 180deg) */}
-        <div className="absolute inset-0 z-10 flex flex-col justify-between rounded-xl border-2 border-line bg-bg-elevated p-6 rotate-y-180 backface-hidden shadow-2xl overflow-hidden">
-          {/* Terracotta Corner Accents */}
-          <div className="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-accent rounded-tl-xl" />
-          <div className="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-accent rounded-tr-xl" />
+        <div className="absolute inset-0 z-10 flex flex-col justify-between rounded-xl border-2 border-line bg-bg-elevated p-4 rotate-y-180 backface-hidden shadow-2xl overflow-hidden">
+          {/* Custom Poster Image Background */}
+          <div className="relative h-full w-full rounded-lg overflow-hidden border border-line bg-bg">
+            <Image
+              src="/profile-back.jpg"
+              alt="Developer Brand Poster Back"
+              fill
+              unoptimized
+              className="object-cover object-center"
+              priority
+            />
+            {/* Subtle Gradient & Badge Details Overlay */}
+            <div className="absolute inset-0 bg-gradient-to-t from-bg/90 via-transparent to-bg/30 pointer-events-none" />
+            
+            {/* Corner Accents */}
+            <div className="absolute top-0 left-0 w-6 h-6 border-t-2 border-l-2 border-accent rounded-tl-md" />
+            <div className="absolute top-0 right-0 w-6 h-6 border-t-2 border-r-2 border-accent rounded-tr-md" />
+            <div className="absolute bottom-0 left-0 w-6 h-6 border-b-2 border-l-2 border-accent rounded-bl-md" />
+            <div className="absolute bottom-0 right-0 w-6 h-6 border-b-2 border-r-2 border-accent rounded-br-md" />
 
-          {/* Stylized Magnetic Stripe */}
-          <div className="mt-4 -mx-6 h-10 bg-bg border-y border-line flex items-center px-6">
-            <div className="h-full w-full bg-[repeating-linear-gradient(90deg,#26262a,#26262a_4px,#0b0b0c_4px,#0b0b0c_8px)]" />
-          </div>
-
-          {/* Tagline / Statement Quote */}
-          <div className="my-3 space-y-2">
-            <p className="font-mono text-[10px] text-accent uppercase tracking-widest">// PHILOSOPHY</p>
-            <p className="font-display text-sm font-semibold text-text leading-snug italic">
-              &quot;Crafting resilient distributed systems and immersive digital interfaces where code meets editorial craft.&quot;
-            </p>
-          </div>
-
-          {/* Barcode-Style Skill Tags Row */}
-          <div className="space-y-2 border-y border-line py-3">
-            <p className="font-mono text-[9px] text-text-muted uppercase tracking-widest">
-              PRIMARY COMPETENCIES
-            </p>
-            <div className="flex flex-wrap gap-1.5 font-mono text-[10px]">
-              <span className="bg-bg border border-line px-2 py-0.5 text-text">NEXT.JS 14</span>
-              <span className="bg-bg border border-line px-2 py-0.5 text-text">TYPESCRIPT</span>
-              <span className="bg-bg border border-line px-2 py-0.5 text-accent">GSAP 3D</span>
-              <span className="bg-bg border border-line px-2 py-0.5 text-text">MONGODB</span>
-              <span className="bg-bg border border-line px-2 py-0.5 text-text">NODE.JS</span>
+            {/* Tap to Flip Pill Indicator */}
+            <div className="absolute bottom-2 left-1/2 -translate-x-1/2 rounded bg-bg/95 backdrop-blur border border-line px-3 py-1 text-[9px] font-mono text-text flex items-center gap-1.5 shadow-md">
+              <span className="h-1.5 w-1.5 rounded-full bg-accent animate-pulse" />
+              <span className="uppercase tracking-wider">TAP OR SCROLL TO ROTATE</span>
             </div>
-            {/* Visual Barcode Lines */}
-            <div className="h-6 w-full bg-[repeating-linear-gradient(90deg,#f4f1ea,#f4f1ea_2px,#141416_2px,#141416_5px,#f4f1ea_5px,#f4f1ea_8px,#141416_8px,#141416_10px)] opacity-60 rounded-xs mt-1" />
-          </div>
-
-          {/* Social Icons & Fine Print */}
-          <div className="flex items-center justify-between pt-2">
-            <div className="flex items-center gap-3">
-              <a
-                href="https://github.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-text-muted hover:text-accent transition-colors"
-                aria-label="GitHub"
-              >
-                <Github className="h-4 w-4" />
-              </a>
-              <a
-                href="https://linkedin.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-text-muted hover:text-accent transition-colors"
-                aria-label="LinkedIn"
-              >
-                <Linkedin className="h-4 w-4" />
-              </a>
-              <a
-                href="https://twitter.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-text-muted hover:text-accent transition-colors"
-                aria-label="Twitter"
-              >
-                <Twitter className="h-4 w-4" />
-              </a>
-            </div>
-            <span className="font-mono text-[9px] text-text-muted">TAP OR SCROLL TO ROTATE</span>
           </div>
         </div>
       </div>
