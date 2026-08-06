@@ -1,14 +1,19 @@
 "use client";
 
-import React from "react";
+import React, { useRef } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowDownRight, FolderGit2, Mail } from "lucide-react";
 import { IDCard } from "@/components/hero/IDCard";
 
 export function HeroSection() {
+  const sectionRef = useRef<HTMLElement>(null);
+
   return (
-    <section className="relative min-h-[90vh] flex flex-col justify-center px-6 md:px-12 mx-auto max-w-7xl pt-6 pb-16">
+    <section
+      ref={sectionRef}
+      className="relative min-h-[90vh] flex flex-col justify-center px-6 md:px-12 mx-auto max-w-7xl pt-6 pb-16"
+    >
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
         {/* Left Column: Headlines & CTAs */}
         <motion.div
@@ -78,7 +83,7 @@ export function HeroSection() {
           transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
           className="lg:col-span-5 flex justify-center"
         >
-          <IDCard />
+          <IDCard pinTarget={sectionRef} />
         </motion.div>
       </div>
     </section>

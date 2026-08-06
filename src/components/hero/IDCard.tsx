@@ -6,7 +6,16 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Github, Linkedin, Twitter, ShieldCheck, QrCode } from "lucide-react";
 
-export function IDCard() {
+interface IDCardProps {
+  /** Optional ref to an ancestor element (e.g. the full hero <section>) that
+   * should be pinned instead of this component's own small container. Pass
+   * this whenever IDCard sits alongside other content (like a headline
+   * column) so the WHOLE section pins together instead of just the card —
+   * otherwise later page sections scroll underneath the still-fixed card. */
+  pinTarget?: React.RefObject<HTMLElement>;
+}
+
+export function IDCard({ pinTarget }: IDCardProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const cardRef = useRef<HTMLDivElement>(null);
   const lanyardRef = useRef<HTMLDivElement>(null);
@@ -23,33 +32,30 @@ export function IDCard() {
 
     if (!cardEl || !containerEl) return;
 
-    // GPU-friendly hints — promote these to their own compositor layer
-    // once, instead of the browser discovering it mid-animation.
+    // Pin the full hero section if one was passed down, otherwise fall
+    // back to this component's own container (standalone usage).
+    const triggerEl = pinTarget?.current ?? containerEl;
+
     gsap.set([cardEl, shadowEl, lanyardEl], { willChange: "transform" });
 
-    // Reusable quickTo interpolator for the lanyard wobble — created ONCE,
-    // reused on every tick, instead of spawning a new tween per frame.
     const lanyardWobble = lanyardEl
       ? gsap.quickTo(lanyardEl, "rotateZ", { duration: 0.3, ease: "power2.out" })
       : null;
 
-    // Track flip state WITHOUT forcing a React re-render every scroll frame.
-    // Only setState when the boolean actually flips (crosses the 50% mark).
     let flippedRef = false;
 
     const tl = gsap.timeline({
       scrollTrigger: {
-        trigger: containerEl,
+        trigger: triggerEl,
         start: "top top+=80",
         end: "+=600",
-        scrub: 1,
-        pin: true,
-        anticipatePin: 1,
+        scrub: 0.5,
+        pin: triggerEl,
         onUpdate: (self) => {
           const nowFlipped = self.progress > 0.5;
           if (nowFlipped !== flippedRef) {
             flippedRef = nowFlipped;
-            setIsFlipped(nowFlipped); // fires at most once per crossing, not per frame
+            setIsFlipped(nowFlipped);
           }
 
           if (lanyardWobble) {
@@ -66,9 +72,6 @@ export function IDCard() {
       ease: "none",
     });
 
-    // Only animate transform + opacity here (cheap, compositor-only).
-    // The blur radius stays a static Tailwind class (blur-md in the JSX)
-    // instead of being recalculated every scroll frame.
     if (shadowEl) {
       tl.to(
         shadowEl,
@@ -84,7 +87,7 @@ export function IDCard() {
     return () => {
       ScrollTrigger.getAll().forEach((st) => st.kill());
     };
-  }, []);
+  }, [pinTarget]);
 
   const handleTapFlip = () => {
     if (!cardRef.current) return;

@@ -19,7 +19,7 @@ const TICKER_ITEMS = [
 export function MarqueeTicker() {
   return (
     <section className="relative w-full border-y border-line bg-bg-elevated py-4 overflow-hidden">
-      <div className="flex w-max animate-marquee-infinite hover:[animation-play-state:paused] select-none">
+      <div className="flex w-max animate-marquee-infinite hover:[animation-play-state:paused] select-none [will-change:transform]">
         {/* Double array for seamless loop */}
         {[...TICKER_ITEMS, ...TICKER_ITEMS, ...TICKER_ITEMS].map((item, index) => (
           <div key={index} className="flex items-center mx-6 gap-6">
