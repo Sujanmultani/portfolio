@@ -235,10 +235,10 @@ export function IDCard({ pinTarget }: IDCardProps) {
           {/* Name & Title */}
           <div className="space-y-1">
             <h3 className="font-display text-2xl font-bold tracking-tight text-text">
-              Alexandre Vance
+              Sujan Multani
             </h3>
             <p className="font-mono text-xs text-text-muted tracking-wide">
-              Principal Full-Stack Engineer
+              Full-Stack Web Developer
             </p>
           </div>
 

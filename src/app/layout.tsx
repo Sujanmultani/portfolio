@@ -6,11 +6,11 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 
 export const metadata: Metadata = {
-  title: "Full-Stack Developer & Systems Architect | Studio Portfolio",
+  title: "Sujan Multani — Full Stack Web Developer | Portfolio",
   description:
-    "Production-grade developer portfolio featuring full-stack architecture, high-performance web systems, and design-led digital experiences.",
-  keywords: ["Full Stack Developer", "Next.js", "TypeScript", "GSAP", "MongoDB", "Node.js", "Software Engineer"],
-  authors: [{ name: "Developer Portfolio" }],
+    "Production-grade portfolio of Sujan Multani, Full Stack Web Developer specializing in Next.js, React, TypeScript, Node.js, and MongoDB.",
+  keywords: ["Sujan Multani", "Full Stack Web Developer", "Next.js", "TypeScript", "React", "MongoDB", "Node.js"],
+  authors: [{ name: "Sujan Multani" }],
 };
 
 export default function RootLayout({

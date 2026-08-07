@@ -44,7 +44,7 @@ export function Navbar() {
             <span className="h-1.5 w-1.5 rounded-full bg-bg" />
           </span>
           <span className="tracking-widest uppercase text-xs font-semibold text-text-muted transition-colors group-hover:text-text">
-            Studio <span className="text-text font-bold">// Portfolio</span>
+            Sujan Multani <span className="text-text font-bold">// Portfolio</span>
           </span>
         </Link>
 
