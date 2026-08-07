@@ -29,8 +29,8 @@ export default async function HomePage() {
     <div className="space-y-12">
       <HeroSection />
       <MarqueeTicker />
-      <IndexListPattern projects={featuredProjects} />
       <AboutTeaser />
+      <IndexListPattern projects={featuredProjects} title="03 — FEATURED WORK" />
       <TestimonialsCarousel />
       <CTASection />
     </div>

@@ -42,7 +42,7 @@ export function AboutTeaser() {
 
           {/* Right Column: Editorial Pillars Narrative */}
           <div className="lg:col-span-7 space-y-6">
-            <span className="eyebrow-label">03 — ARCHITECTURAL PHILOSOPHY</span>
+            <span className="eyebrow-label">02 — BIOGRAPHY &amp; ARCHITECTURE</span>
             <h2 className="font-heading-fluid font-bold text-text tracking-tight">
               Engineering with architectural rigor and editorial perfection.
             </h2>
