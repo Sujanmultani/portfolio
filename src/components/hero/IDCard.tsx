@@ -76,14 +76,18 @@ export function IDCard({ pinTarget }: IDCardProps) {
             if (window.innerWidth < 1024) return 0;
             const containerBounds = containerRef.current!.getBoundingClientRect();
             const targetBounds = bioTarget.getBoundingClientRect();
-            return targetBounds.left - containerBounds.left + (targetBounds.width - containerBounds.width) / 2;
+            const containerCenter = containerBounds.left + containerBounds.width / 2;
+            const targetCenter = targetBounds.left + targetBounds.width / 2;
+            return targetCenter - containerCenter;
           },
           y: () => {
             const containerBounds = containerRef.current!.getBoundingClientRect();
             const targetBounds = bioTarget.getBoundingClientRect();
-            return targetBounds.top - containerBounds.top;
+            const containerCenter = containerBounds.top + containerBounds.height / 2;
+            const targetCenter = targetBounds.top + targetBounds.height / 2;
+            return targetCenter - containerCenter;
           },
-          scale: 0.9,
+          scale: 0.92,
           ease: "power2.inOut",
         },
         0

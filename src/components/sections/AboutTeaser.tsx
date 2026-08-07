@@ -11,7 +11,7 @@ export function AboutTeaser() {
       <div className="mx-auto max-w-7xl px-6 md:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           {/* Left Column: 3D ID Card Landing Destination Target */}
-          <div id="bio-card-target" className="lg:col-span-5 relative min-h-[520px] flex items-center justify-center rounded-xl border-2 border-dashed border-line/50 bg-bg-elevated/20 p-4">
+          <div id="bio-card-target" className="lg:col-span-5 relative min-h-[560px] flex items-center justify-center rounded-xl border border-line/40 bg-bg-elevated/10 p-4">
             {/* Mobile / Fallback Card View */}
             <div className="lg:hidden relative aspect-[4/5] w-full max-w-sm rounded-lg border-2 border-line bg-bg overflow-hidden shadow-2xl">
               <Image
