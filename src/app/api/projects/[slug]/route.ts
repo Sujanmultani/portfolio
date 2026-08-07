@@ -7,7 +7,8 @@ export async function GET(
   request: NextRequest,
   { params }: { params: { slug: string } }
 ) {
-  const { slug } = params;
+  const { slug: rawSlug } = params;
+  const slug = rawSlug === "eye-leads-care" ? "eyeleads-eyewear-store" : rawSlug;
 
   try {
     const conn = await connectToDatabase();

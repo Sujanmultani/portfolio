@@ -9,7 +9,8 @@ import { MOCK_PROJECTS, ProjectData } from "@/data/mockProjects";
 
 export default function ProjectDetailPage({ params }: { params: { slug: string } }) {
   const { slug } = params;
-  const projectIndex = MOCK_PROJECTS.findIndex((p) => p.slug === slug);
+  const normalizedSlug = slug === "eye-leads-care" ? "eyeleads-eyewear-store" : slug;
+  const projectIndex = MOCK_PROJECTS.findIndex((p) => p.slug === normalizedSlug);
   const project: ProjectData | undefined = MOCK_PROJECTS[projectIndex];
 
   const [activeLightboxImage, setActiveLightboxImage] = useState<string | null>(null);
