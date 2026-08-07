@@ -81,13 +81,14 @@ export function IDCard({ pinTarget }: IDCardProps) {
             return targetCenter - containerCenter;
           },
           y: () => {
+            if (window.innerWidth < 1024) return 0;
             const containerBounds = containerRef.current!.getBoundingClientRect();
             const targetBounds = bioTarget.getBoundingClientRect();
             const containerCenter = containerBounds.top + containerBounds.height / 2;
             const targetCenter = targetBounds.top + targetBounds.height / 2;
             return targetCenter - containerCenter;
           },
-          scale: 0.92,
+          scale: () => (window.innerWidth < 1024 ? 1 : 0.92),
           ease: "power2.inOut",
         },
         0

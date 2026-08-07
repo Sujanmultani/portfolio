@@ -11,15 +11,15 @@ export function AboutTeaser() {
       <div className="mx-auto max-w-7xl px-6 md:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           {/* Left Column: 3D ID Card Landing Destination Target */}
-          <div id="bio-card-target" className="lg:col-span-5 relative min-h-[560px] flex items-center justify-center rounded-xl border border-line/40 bg-bg-elevated/10 p-4">
+          <div id="bio-card-target" className="lg:col-span-5 relative min-h-0 lg:min-h-[560px] flex items-center justify-center rounded-xl border-0 lg:border lg:border-line/40 bg-transparent lg:bg-bg-elevated/10 p-0 lg:p-4">
             {/* Mobile / Fallback Card View */}
-            <div className="lg:hidden relative aspect-[4/5] w-full max-w-sm rounded-lg border-2 border-line bg-bg overflow-hidden shadow-2xl">
+            <div className="block lg:hidden relative aspect-[4/5] w-full max-w-sm rounded-xl border-2 border-line bg-bg overflow-hidden shadow-2xl mx-auto my-4">
               <Image
-                src="/profile-back.jpg"
-                alt="Developer Brand Poster"
+                src="/profile.jpg"
+                alt="Developer Profile Portrait"
                 fill
                 unoptimized
-                className="object-cover object-center"
+                className="object-cover object-top"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-bg via-transparent to-transparent opacity-80" />
               <div className="absolute bottom-4 left-4 right-4 p-3 rounded border border-line bg-bg/90 backdrop-blur font-mono text-center">
