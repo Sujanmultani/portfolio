@@ -42,45 +42,69 @@ export function IDCard({ pinTarget }: IDCardProps) {
       ? gsap.quickTo(lanyardEl, "rotateZ", { duration: 0.3, ease: "power2.out" })
       : null;
 
-    let flippedRef = false;
+    const bioTarget = document.getElementById("bio-card-target");
 
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: triggerEl,
-        start: "top top+=80",
-        end: "+=900",
-        scrub: 0.8,
-        pin: triggerEl,
+        endTrigger: bioTarget || undefined,
+        start: "top top+=60",
+        end: bioTarget ? "top center+=100" : "+=600",
+        scrub: 1,
         onUpdate: (self) => {
-          const currentRotation = self.progress * 900;
-          const normalizedAngle = currentRotation % 360;
-          const isFacingBack = normalizedAngle > 90 && normalizedAngle < 270;
-          if (isFacingBack !== flippedRef) {
-            flippedRef = isFacingBack;
-            setIsFlipped(isFacingBack);
+          const nowFlipped = self.progress > 0.4;
+          if (nowFlipped !== flippedRef) {
+            flippedRef = nowFlipped;
+            setIsFlipped(nowFlipped);
           }
 
           if (lanyardWobble) {
             const velocity = self.getVelocity();
             const rotateXWobble = Math.max(-15, Math.min(15, velocity / 120));
-            lanyardWobble(rotateXWobble * 0.6);
+            lanyardWobble(rotateXWobble * 0.5);
           }
         },
       },
     });
 
-    tl.to(cardEl, {
-      rotateY: 900,
-      ease: "power1.inOut",
-    });
+    if (bioTarget && containerRef.current) {
+      tl.to(
+        containerRef.current,
+        {
+          x: () => {
+            if (window.innerWidth < 1024) return 0;
+            const containerBounds = containerRef.current!.getBoundingClientRect();
+            const targetBounds = bioTarget.getBoundingClientRect();
+            return targetBounds.left - containerBounds.left + (targetBounds.width - containerBounds.width) / 2;
+          },
+          y: () => {
+            const containerBounds = containerRef.current!.getBoundingClientRect();
+            const targetBounds = bioTarget.getBoundingClientRect();
+            return targetBounds.top - containerBounds.top;
+          },
+          scale: 0.9,
+          ease: "power2.inOut",
+        },
+        0
+      );
+    }
+
+    tl.to(
+      cardEl,
+      {
+        rotateY: 180,
+        ease: "power2.inOut",
+      },
+      0
+    );
 
     if (shadowEl) {
       tl.to(
         shadowEl,
         {
-          scaleX: 0.5,
-          opacity: 0.3,
-          ease: "power1.inOut",
+          scaleX: 0.6,
+          opacity: 0.4,
+          ease: "none",
         },
         0
       );
@@ -166,9 +190,8 @@ export function IDCard({ pinTarget }: IDCardProps) {
         <div className="absolute inset-0 z-10 flex flex-col justify-between rounded-xl border-2 border-line bg-bg-elevated p-6 backface-hidden shadow-2xl overflow-hidden">
           {/* Moving Reflection Sheen Overlay */}
           <div
-            className={`pointer-events-none absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent transition-opacity duration-500 z-20 ${
-              isHovered ? "opacity-100" : "opacity-0"
-            }`}
+            className={`pointer-events-none absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent transition-opacity duration-500 z-20 ${isHovered ? "opacity-100" : "opacity-0"
+              }`}
           />
 
           {/* Terracotta Badge Corner Accents */}
@@ -239,7 +262,7 @@ export function IDCard({ pinTarget }: IDCardProps) {
             />
             {/* Subtle Gradient & Badge Details Overlay */}
             <div className="absolute inset-0 bg-gradient-to-t from-bg/90 via-transparent to-bg/30 pointer-events-none" />
-            
+
             {/* Corner Accents */}
             <div className="absolute top-0 left-0 w-6 h-6 border-t-2 border-l-2 border-accent rounded-tl-md" />
             <div className="absolute top-0 right-0 w-6 h-6 border-t-2 border-r-2 border-accent rounded-tr-md" />
