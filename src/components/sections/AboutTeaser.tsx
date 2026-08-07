@@ -10,29 +10,30 @@ export function AboutTeaser() {
     <section className="relative py-24 border-t border-line bg-bg-elevated/30">
       <div className="mx-auto max-w-7xl px-6 md:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          {/* Left Column: Portrait & Stats */}
-          <div id="bio-card-target" className="lg:col-span-5 relative min-h-[480px]">
-            <div className="relative aspect-[4/5] w-full rounded-lg border-2 border-line bg-bg overflow-hidden shadow-2xl">
+          {/* Left Column: 3D ID Card Landing Destination Target */}
+          <div id="bio-card-target" className="lg:col-span-5 relative min-h-[520px] flex items-center justify-center rounded-xl border-2 border-dashed border-line/50 bg-bg-elevated/20 p-4">
+            {/* Mobile / Fallback Card View */}
+            <div className="lg:hidden relative aspect-[4/5] w-full max-w-sm rounded-lg border-2 border-line bg-bg overflow-hidden shadow-2xl">
               <Image
-                src="/profile.jpg"
-                alt="Developer Profile Portrait"
+                src="/profile-back.jpg"
+                alt="Developer Brand Poster"
                 fill
                 unoptimized
-                className="object-cover object-top hover:scale-105 transition-transform duration-700"
+                className="object-cover object-center"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-bg via-transparent to-transparent opacity-80" />
-              <div className="absolute bottom-6 left-6 right-6 p-4 rounded border border-line bg-bg/90 backdrop-blur">
-                <div className="grid grid-cols-3 gap-2 font-mono text-center">
+              <div className="absolute bottom-4 left-4 right-4 p-3 rounded border border-line bg-bg/90 backdrop-blur font-mono text-center">
+                <div className="grid grid-cols-3 gap-2">
                   <div>
-                    <span className="block text-xl font-bold text-accent">8+</span>
+                    <span className="block text-lg font-bold text-accent">8+</span>
                     <span className="text-[9px] text-text-muted uppercase">Years Exp.</span>
                   </div>
                   <div className="border-x border-line">
-                    <span className="block text-xl font-bold text-text">45+</span>
+                    <span className="block text-lg font-bold text-text">45+</span>
                     <span className="text-[9px] text-text-muted uppercase">Shipped</span>
                   </div>
                   <div>
-                    <span className="block text-xl font-bold text-success">99.9%</span>
+                    <span className="block text-lg font-bold text-success">99.9%</span>
                     <span className="text-[9px] text-text-muted uppercase">Uptime</span>
                   </div>
                 </div>

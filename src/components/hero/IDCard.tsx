@@ -151,7 +151,7 @@ export function IDCard({ pinTarget }: IDCardProps) {
   return (
     <div
       ref={containerRef}
-      className="relative flex flex-col items-center justify-center py-12 perspective-container w-full max-w-sm mx-auto"
+      className="relative z-40 flex flex-col items-center justify-center py-12 perspective-container w-full max-w-sm mx-auto"
       data-cursor="Scroll / Flip"
     >
       {/* Lanyard Strap & Clip Graphic */}
