@@ -14,11 +14,11 @@ export function AboutTeaser() {
           <div className="lg:col-span-5 relative">
             <div className="relative aspect-[4/5] w-full rounded-lg border-2 border-line bg-bg overflow-hidden shadow-2xl">
               <Image
-                src="/profile.jpg"
-                alt="Developer Profile Portrait"
+                src="/profile-back.jpg"
+                alt="Developer Brand Poster"
                 fill
                 unoptimized
-                className="object-cover object-top hover:scale-105 transition-transform duration-700"
+                className="object-cover object-center hover:scale-105 transition-transform duration-700"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-bg via-transparent to-transparent opacity-80" />
               <div className="absolute bottom-6 left-6 right-6 p-4 rounded border border-line bg-bg/90 backdrop-blur">
