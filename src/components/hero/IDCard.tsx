@@ -42,6 +42,7 @@ export function IDCard({ pinTarget }: IDCardProps) {
       ? gsap.quickTo(lanyardEl, "rotateZ", { duration: 0.3, ease: "power2.out" })
       : null;
 
+    let flippedRef = false;
     const bioTarget = document.getElementById("bio-card-target");
 
     const tl = gsap.timeline({
