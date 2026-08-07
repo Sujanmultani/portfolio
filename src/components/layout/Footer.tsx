@@ -31,17 +31,29 @@ export function Footer() {
   };
 
   return (
-    <footer className="border-t border-line bg-bg pt-16 pb-12 text-text">
-      <div className="mx-auto max-w-7xl px-6 md:px-12">
+    <footer className="relative border-t border-line bg-bg pt-20 pb-12 text-text overflow-hidden">
+      {/* Huge Faded Architectural Watermark */}
+      <div className="pointer-events-none absolute bottom-0 left-1/2 -translate-x-1/2 select-none opacity-[0.03] whitespace-nowrap font-display text-[12vw] font-black uppercase tracking-tighter leading-none text-text">
+        SUJAN MULTANI // STAFF ENGINEER
+      </div>
+
+      <div className="relative z-10 mx-auto max-w-7xl px-6 md:px-12">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 pb-16 border-b border-line/60">
-          {/* Main Footer Headline */}
+          {/* Main Footer Headline & Status */}
           <div className="md:col-span-6 space-y-6">
-            <span className="eyebrow-label">06 — GET IN TOUCH</span>
+            <div className="flex items-center gap-3">
+              <span className="eyebrow-label">06 — GET IN TOUCH</span>
+              <span className="inline-flex items-center gap-1.5 rounded-full border border-line bg-bg-elevated px-3 py-1 font-mono text-[10px] text-text-muted">
+                <span className="h-1.5 w-1.5 rounded-full bg-success animate-pulse" />
+                <span>AVAILABLE Q3/Q4</span>
+              </span>
+            </div>
+
             <h2 className="font-heading-fluid font-bold text-text tracking-tight">
               Let&apos;s engineer something extraordinary together.
             </h2>
             <p className="text-text-muted text-sm max-w-md leading-relaxed">
-              Available for high-impact full-stack architecture, technical consulting, and design-led web development.
+              Available for select full-stack architecture contracts, high-throughput backend design, and creative motion engineering.
             </p>
             <div className="pt-2">
               <a
@@ -59,7 +71,7 @@ export function Footer() {
           {/* Quick Links & Navigation */}
           <div className="md:col-span-3 space-y-4">
             <h3 className="font-mono text-xs uppercase tracking-widest text-text-muted">Navigation</h3>
-            <ul className="space-y-2.5 text-sm">
+            <ul className="space-y-2.5 text-sm font-mono">
               <li>
                 <Link href="/" className="hover:text-accent transition-colors">
                   01 // Home
@@ -72,7 +84,7 @@ export function Footer() {
               </li>
               <li>
                 <Link href="/about" className="hover:text-accent transition-colors">
-                  03 // About & Biography
+                  03 // About &amp; Biography
                 </Link>
               </li>
               <li>
@@ -86,7 +98,7 @@ export function Footer() {
           {/* Social Profiles */}
           <div className="md:col-span-3 space-y-4">
             <h3 className="font-mono text-xs uppercase tracking-widest text-text-muted">Connect</h3>
-            <div className="flex flex-col gap-3 text-sm">
+            <div className="flex flex-col gap-3 text-sm font-mono">
               <a
                 href="https://github.com"
                 target="_blank"

@@ -3,7 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, CheckCircle2 } from "lucide-react";
+import { ArrowRight, Layers, ShieldCheck, Sparkles } from "lucide-react";
 
 export function AboutTeaser() {
   return (
@@ -22,46 +22,64 @@ export function AboutTeaser() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-bg via-transparent to-transparent opacity-80" />
               <div className="absolute bottom-6 left-6 right-6 p-4 rounded border border-line bg-bg/90 backdrop-blur">
-                <div className="grid grid-cols-2 gap-4 font-mono text-center">
+                <div className="grid grid-cols-3 gap-2 font-mono text-center">
                   <div>
-                    <span className="block text-2xl font-bold text-accent">8+</span>
-                    <span className="text-[10px] text-text-muted uppercase">Years Exp.</span>
+                    <span className="block text-xl font-bold text-accent">8+</span>
+                    <span className="text-[9px] text-text-muted uppercase">Years Exp.</span>
                   </div>
-                  <div className="border-l border-line">
-                    <span className="block text-2xl font-bold text-text">45+</span>
-                    <span className="text-[10px] text-text-muted uppercase">Projects Shipped</span>
+                  <div className="border-x border-line">
+                    <span className="block text-xl font-bold text-text">45+</span>
+                    <span className="text-[9px] text-text-muted uppercase">Shipped</span>
+                  </div>
+                  <div>
+                    <span className="block text-xl font-bold text-success">99.9%</span>
+                    <span className="text-[9px] text-text-muted uppercase">Uptime</span>
                   </div>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Right Column: Narrative Excerpt */}
+          {/* Right Column: Editorial Pillars Narrative */}
           <div className="lg:col-span-7 space-y-6">
-            <span className="eyebrow-label">03 — BIOGRAPHY &amp; CAPABILITIES</span>
+            <span className="eyebrow-label">03 — ARCHITECTURAL PHILOSOPHY</span>
             <h2 className="font-heading-fluid font-bold text-text tracking-tight">
               Engineering with architectural rigor and editorial perfection.
             </h2>
             <p className="text-text-muted text-base md:text-lg leading-relaxed">
-              With over eight years of experience building web platforms, I bridge the gap between high-performance backends and high-fidelity user interfaces. My work focuses on scalable microservices, low-latency API handlers, and editorial motion systems that elevate digital products.
+              Software is most effective when technical resilience and creative motion operate in total harmony. I specialize in 3 core engineering pillars:
             </p>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2 font-mono text-xs text-text">
-              <div className="flex items-center gap-2.5 border border-line bg-bg p-3">
-                <CheckCircle2 className="h-4 w-4 text-accent" />
-                <span>Next.js 14 App Router &amp; Server Actions</span>
+            {/* 3 Editorial Pillars */}
+            <div className="space-y-3 pt-2">
+              <div className="flex items-start gap-3 border border-line bg-bg p-4 rounded-md">
+                <Layers className="h-5 w-5 text-accent shrink-0 mt-0.5" />
+                <div>
+                  <h4 className="font-display text-sm font-bold text-text">Distributed System Architecture</h4>
+                  <p className="font-mono text-xs text-text-muted mt-0.5">
+                    High-throughput Next.js 14 App Router, lock-free microservices, and indexed MongoDB data pipelines.
+                  </p>
+                </div>
               </div>
-              <div className="flex items-center gap-2.5 border border-line bg-bg p-3">
-                <CheckCircle2 className="h-4 w-4 text-accent" />
-                <span>Distributed MongoDB Schema Architecture</span>
+
+              <div className="flex items-start gap-3 border border-line bg-bg p-4 rounded-md">
+                <ShieldCheck className="h-5 w-5 text-accent shrink-0 mt-0.5" />
+                <div>
+                  <h4 className="font-display text-sm font-bold text-text">Performance &amp; Type Precision</h4>
+                  <p className="font-mono text-xs text-text-muted mt-0.5">
+                    Strict TypeScript contracts, sub-5ms API response latency, and zero-layout-shift render cycles.
+                  </p>
+                </div>
               </div>
-              <div className="flex items-center gap-2.5 border border-line bg-bg p-3">
-                <CheckCircle2 className="h-4 w-4 text-accent" />
-                <span>Scroll-Driven GSAP 3D &amp; Motion</span>
-              </div>
-              <div className="flex items-center gap-2.5 border border-line bg-bg p-3">
-                <CheckCircle2 className="h-4 w-4 text-accent" />
-                <span>TypeScript Strict Type Systems</span>
+
+              <div className="flex items-start gap-3 border border-line bg-bg p-4 rounded-md">
+                <Sparkles className="h-5 w-5 text-accent shrink-0 mt-0.5" />
+                <div>
+                  <h4 className="font-display text-sm font-bold text-text">Scroll-Driven Motion &amp; 3D Physics</h4>
+                  <p className="font-mono text-xs text-text-muted mt-0.5">
+                    GSAP ScrollTrigger, Lenis smooth scroll, and hardware-accelerated 3D transform interactions.
+                  </p>
+                </div>
               </div>
             </div>
 

@@ -89,6 +89,27 @@ export function IDCard({ pinTarget }: IDCardProps) {
     };
   }, [pinTarget]);
 
+  const [hoverTilt, setHoverTilt] = useState({ x: 0, y: 0 });
+  const [isHovered, setIsHovered] = useState(false);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!cardRef.current) return;
+    const rect = cardRef.current.getBoundingClientRect();
+    const x = e.clientX - rect.left - rect.width / 2;
+    const y = e.clientY - rect.top - rect.height / 2;
+
+    const tiltX = (y / (rect.height / 2)) * -8;
+    const tiltY = (x / (rect.width / 2)) * 8;
+    setHoverTilt({ x: tiltX, y: tiltY });
+  };
+
+  const handleMouseEnter = () => setIsHovered(true);
+
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+    setHoverTilt({ x: 0, y: 0 });
+  };
+
   const handleTapFlip = () => {
     if (!cardRef.current) return;
     const targetY = isFlipped ? 0 : 180;
@@ -124,7 +145,15 @@ export function IDCard({ pinTarget }: IDCardProps) {
       <div
         ref={cardRef}
         onClick={handleTapFlip}
-        className="relative w-[320px] sm:w-[350px] h-[500px] cursor-pointer preserve-3d shadow-2xl transition-shadow duration-300 -mt-1"
+        onMouseMove={handleMouseMove}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+        style={{
+          transform: isHovered
+            ? `rotateX(${hoverTilt.x}deg) rotateY(${isFlipped ? 180 + hoverTilt.y : hoverTilt.y}deg)`
+            : undefined,
+        }}
+        className="relative w-[320px] sm:w-[350px] h-[500px] cursor-pointer preserve-3d shadow-2xl transition-transform duration-200 ease-out -mt-1"
       >
         {/* Hole Punch Circle */}
         <div className="absolute top-3 left-1/2 -translate-x-1/2 z-30 h-4 w-8 rounded-full bg-bg border border-line shadow-inner flex items-center justify-center">
@@ -133,6 +162,13 @@ export function IDCard({ pinTarget }: IDCardProps) {
 
         {/* FRONT FACE */}
         <div className="absolute inset-0 z-10 flex flex-col justify-between rounded-xl border-2 border-line bg-bg-elevated p-6 backface-hidden shadow-2xl overflow-hidden">
+          {/* Moving Reflection Sheen Overlay */}
+          <div
+            className={`pointer-events-none absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent transition-opacity duration-500 z-20 ${
+              isHovered ? "opacity-100" : "opacity-0"
+            }`}
+          />
+
           {/* Terracotta Badge Corner Accents */}
           <div className="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-accent rounded-tl-xl" />
           <div className="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-accent rounded-tr-xl" />

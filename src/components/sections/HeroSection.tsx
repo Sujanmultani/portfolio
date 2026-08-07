@@ -29,49 +29,63 @@ export function HeroSection() {
             <span className="font-mono text-xs text-text-muted uppercase">SYSTEMS & INTERACTION</span>
           </div>
 
-          {/* Confident Large Headline */}
+          {/* Manifesto Statement Headline */}
           <h1 className="font-display-fluid font-extrabold tracking-tight text-text text-balance">
             Architecting <span className="text-accent underline underline-offset-8 decoration-line">resilient</span> web systems &amp; digital craft.
           </h1>
 
-          {/* Editorial Paragraph */}
+          {/* Elevated Manifesto Paragraph */}
           <p className="text-text-muted text-base md:text-lg max-w-2xl leading-relaxed">
-            I am a senior full-stack engineer and interactive developer crafting high-throughput backend APIs, Next.js architecture, and scroll-driven 3D web experiences with mathematical precision.
+            Building software where engineering precision meets unforgettable digital experiences. Specialized in high-throughput Next.js architecture, distributed MongoDB pipelines, and scroll-driven 3D interaction.
           </p>
 
-          {/* Action CTAs */}
+          {/* Action CTAs with Text-Slide Micro-Interactions */}
           <div className="flex flex-wrap items-center gap-4 pt-2">
             <Link
               href="/projects"
-              className="group flex items-center gap-3 border-2 border-accent bg-accent px-6 py-3.5 text-sm font-semibold uppercase tracking-wider text-white transition-all duration-300 hover:bg-accent-hover hover:border-accent-hover shadow-lg"
+              className="group relative inline-flex items-center gap-3 overflow-hidden border-2 border-accent bg-accent px-6 py-3.5 text-sm font-semibold uppercase tracking-wider text-white transition-all duration-300 hover:bg-accent-hover hover:border-accent-hover shadow-lg"
             >
-              <FolderGit2 className="h-4 w-4" />
-              <span>Explore Projects</span>
-              <ArrowDownRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1 group-hover:translate-y-1" />
+              <FolderGit2 className="h-4 w-4 relative z-10" />
+              <div className="relative z-10 overflow-hidden h-5">
+                <span className="block transition-transform duration-300 ease-out group-hover:-translate-y-full">
+                  Explore Projects
+                </span>
+                <span className="block absolute top-0 left-0 transition-transform duration-300 ease-out translate-y-full group-hover:translate-y-0 text-white font-bold">
+                  Explore Projects
+                </span>
+              </div>
+              <ArrowDownRight className="h-4 w-4 relative z-10 transition-transform duration-300 group-hover:translate-x-1 group-hover:translate-y-1" />
             </Link>
 
             <Link
               href="/contact"
-              className="group flex items-center gap-3 border border-line bg-bg-elevated px-6 py-3.5 text-sm font-semibold uppercase tracking-wider text-text transition-all duration-300 hover:border-accent hover:text-accent"
+              className="group relative inline-flex items-center gap-3 overflow-hidden border border-line bg-bg-elevated px-6 py-3.5 text-sm font-semibold uppercase tracking-wider text-text transition-all duration-300 hover:border-accent hover:text-accent"
             >
-              <Mail className="h-4 w-4" />
-              <span>Get In Touch</span>
+              <Mail className="h-4 w-4 relative z-10" />
+              <div className="relative z-10 overflow-hidden h-5">
+                <span className="block transition-transform duration-300 ease-out group-hover:-translate-y-full">
+                  Get In Touch
+                </span>
+                <span className="block absolute top-0 left-0 transition-transform duration-300 ease-out translate-y-full group-hover:translate-y-0 text-accent font-bold">
+                  Get In Touch
+                </span>
+              </div>
             </Link>
           </div>
 
-          {/* Meta Tech Stack Pills */}
+          {/* Trust Metrics Pills */}
           <div className="pt-6 border-t border-line/60 flex flex-wrap items-center gap-6 text-xs font-mono text-text-muted">
             <div className="flex items-center gap-2">
               <span className="h-1.5 w-1.5 rounded-full bg-accent" />
-              <span>NEXT.JS 14 APP ROUTER</span>
+              <span>8+ YEARS ARCHITECTURE</span>
             </div>
             <div className="flex items-center gap-2">
               <span className="h-1.5 w-1.5 rounded-full bg-accent" />
-              <span>TYPESCRIPT</span>
+              <span>45+ SYSTEMS SHIPPED</span>
             </div>
             <div className="flex items-center gap-2">
-              <span className="h-1.5 w-1.5 rounded-full bg-accent" />
-              <span>MONGODB &amp; GSAP</span>
+              <span className="h-1.5 w-1.5 rounded-full bg-success" />
+              <span>99.9% UPTIME COMMITMENT</span>
             </div>
           </div>
         </motion.div>

@@ -109,15 +109,15 @@ export function IndexListPattern({
               onMouseEnter={() => setHoveredProject(project)}
               onMouseLeave={() => setHoveredProject(null)}
               data-cursor="View Case"
-              className="group relative block py-8 transition-colors duration-300 hover:bg-bg-elevated/40"
+              className="group relative block py-8 transition-all duration-300 hover:bg-bg-elevated/60"
             >
               <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 px-2 md:px-4">
                 {/* Index Number + Title */}
                 <div className="flex items-baseline gap-6 md:gap-10">
-                  <span className="font-mono text-lg md:text-xl text-text-muted transition-colors duration-300 group-hover:text-accent font-semibold">
+                  <span className="font-mono text-lg md:text-xl text-text-muted transition-colors duration-300 group-hover:text-accent font-bold">
                     {formattedIndex}
                   </span>
-                  <h3 className="font-display text-2xl md:text-4xl font-bold tracking-tight text-text transition-transform duration-300 group-hover:translate-x-3 group-hover:text-accent">
+                  <h3 className="font-display text-2xl md:text-4xl font-bold tracking-tight text-text transition-all duration-300 group-hover:translate-x-4 group-hover:text-accent">
                     {project.title}
                   </h3>
                 </div>
@@ -135,15 +135,15 @@ export function IndexListPattern({
                 {/* Metadata Tags & Link Arrow */}
                 <div className="flex flex-wrap items-center gap-6 justify-between lg:justify-end">
                   <div className="flex items-center gap-3 font-mono text-xs text-text-muted">
-                    <span className="border border-line bg-bg px-2.5 py-1 text-text">
+                    <span className="border border-line bg-bg px-2.5 py-1 text-text transition-colors duration-300 group-hover:border-accent group-hover:text-accent font-semibold">
                       {project.category}
                     </span>
                     <span className="text-line">|</span>
-                    <span>{project.year}</span>
+                    <span className="font-semibold text-text">{project.year}</span>
                   </div>
 
-                  <div className="flex h-10 w-10 items-center justify-center rounded-full border border-line bg-bg transition-colors duration-300 group-hover:border-accent group-hover:bg-accent group-hover:text-bg">
-                    <ArrowUpRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                  <div className="flex h-11 w-11 items-center justify-center rounded-full border border-line bg-bg transition-colors duration-300 group-hover:border-accent group-hover:bg-accent group-hover:text-white shadow-sm">
+                    <ArrowUpRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
                   </div>
                 </div>
               </div>
