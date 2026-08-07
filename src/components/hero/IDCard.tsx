@@ -48,37 +48,39 @@ export function IDCard({ pinTarget }: IDCardProps) {
       scrollTrigger: {
         trigger: triggerEl,
         start: "top top+=80",
-        end: "+=600",
-        scrub: 0.5,
+        end: "+=900",
+        scrub: 0.8,
         pin: triggerEl,
         onUpdate: (self) => {
-          const nowFlipped = self.progress > 0.5;
-          if (nowFlipped !== flippedRef) {
-            flippedRef = nowFlipped;
-            setIsFlipped(nowFlipped);
+          const currentRotation = self.progress * 900;
+          const normalizedAngle = currentRotation % 360;
+          const isFacingBack = normalizedAngle > 90 && normalizedAngle < 270;
+          if (isFacingBack !== flippedRef) {
+            flippedRef = isFacingBack;
+            setIsFlipped(isFacingBack);
           }
 
           if (lanyardWobble) {
             const velocity = self.getVelocity();
-            const rotateXWobble = Math.max(-12, Math.min(12, velocity / 150));
-            lanyardWobble(rotateXWobble * 0.5);
+            const rotateXWobble = Math.max(-15, Math.min(15, velocity / 120));
+            lanyardWobble(rotateXWobble * 0.6);
           }
         },
       },
     });
 
     tl.to(cardEl, {
-      rotateY: 180,
-      ease: "none",
+      rotateY: 900,
+      ease: "power1.inOut",
     });
 
     if (shadowEl) {
       tl.to(
         shadowEl,
         {
-          scaleX: 0.6,
-          opacity: 0.4,
-          ease: "none",
+          scaleX: 0.5,
+          opacity: 0.3,
+          ease: "power1.inOut",
         },
         0
       );
