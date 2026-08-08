@@ -12,9 +12,26 @@ export function HeroSection() {
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-[90vh] flex flex-col justify-center px-6 md:px-12 mx-auto max-w-7xl pt-6 pb-16"
+      className="relative min-h-[90vh] flex flex-col justify-center px-6 md:px-12 mx-auto max-w-7xl pt-6 pb-16 overflow-hidden"
     >
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      {/* Oversized Scrolling Background Name Marquee */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 top-1/2 -translate-y-1/2 z-0 select-none overflow-hidden opacity-[0.04] md:opacity-[0.05]"
+      >
+        <div className="flex w-max motion-safe:animate-marquee-infinite motion-reduce:animate-none [will-change:transform]">
+          {[...Array(4)].map((_, i) => (
+            <span
+              key={i}
+              className="font-display font-black text-[18vw] lg:text-[14vw] uppercase tracking-tighter text-text whitespace-nowrap px-8 leading-none"
+            >
+              SUJAN MULTANI <span className="text-accent mx-4">•</span>
+            </span>
+          ))}
+        </div>
+      </div>
+
+      <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
         {/* Left Column: Headlines & CTAs */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
