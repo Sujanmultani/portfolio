@@ -12,7 +12,7 @@ export function HeroSection() {
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-[90vh] flex flex-col justify-center px-6 md:px-12 mx-auto max-w-7xl pt-6 pb-16 overflow-hidden"
+      className="relative z-30 min-h-[90vh] flex flex-col justify-center px-6 md:px-12 mx-auto max-w-7xl pt-6 pb-16"
     >
       {/* Oversized Scrolling Background Name Marquee (Contained Below Navbar) */}
       <div
