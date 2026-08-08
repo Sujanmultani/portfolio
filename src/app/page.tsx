@@ -6,6 +6,7 @@ import { TestimonialsCarousel } from "@/components/sections/TestimonialsCarousel
 import { CTASection } from "@/components/sections/CTASection";
 import { MOCK_PROJECTS } from "@/data/mockProjects";
 
+export const dynamic = "force-dynamic";
 export const revalidate = 0; // Always serve fresh, real content
 
 export default function HomePage() {
