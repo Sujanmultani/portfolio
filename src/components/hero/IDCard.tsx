@@ -4,14 +4,9 @@ import React, { useRef, useEffect, useState } from "react";
 import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Github, Linkedin, Twitter, ShieldCheck, QrCode } from "lucide-react";
+import { ShieldCheck, QrCode } from "lucide-react";
 
 interface IDCardProps {
-  /** Optional ref to an ancestor element (e.g. the full hero <section>) that
-   * should be pinned instead of this component's own small container. Pass
-   * this whenever IDCard sits alongside other content (like a headline
-   * column) so the WHOLE section pins together instead of just the card —
-   * otherwise later page sections scroll underneath the still-fixed card. */
   pinTarget?: React.RefObject<HTMLElement>;
 }
 
@@ -21,6 +16,9 @@ export function IDCard({ pinTarget }: IDCardProps) {
   const lanyardRef = useRef<HTMLDivElement>(null);
   const shadowRef = useRef<HTMLDivElement>(null);
   const [isFlipped, setIsFlipped] = useState(false);
+
+  // We keep a ref to track flip status for mouse handlers without re-triggering GSAP effect
+  const isFlippedRef = useRef(false);
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -32,19 +30,18 @@ export function IDCard({ pinTarget }: IDCardProps) {
 
     if (!cardEl || !containerEl) return;
 
-    // Pin the full hero section if one was passed down, otherwise fall
-    // back to this component's own container (standalone usage).
     const triggerEl = pinTarget?.current ?? containerEl;
+    const bioTarget = document.getElementById("bio-card-target");
 
-    gsap.set([cardEl, shadowEl, lanyardEl], { willChange: "transform" });
+    gsap.set([cardEl, shadowEl, lanyardEl, containerEl], { willChange: "transform" });
 
     const lanyardWobble = lanyardEl
       ? gsap.quickTo(lanyardEl, "rotateZ", { duration: 0.3, ease: "power2.out" })
       : null;
 
     let flippedRef = false;
-    const bioTarget = document.getElementById("bio-card-target");
 
+    // Timeline for scroll-driven fly & flip
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: triggerEl,
@@ -56,6 +53,7 @@ export function IDCard({ pinTarget }: IDCardProps) {
           const nowFlipped = self.progress > 0.4;
           if (nowFlipped !== flippedRef) {
             flippedRef = nowFlipped;
+            isFlippedRef.current = nowFlipped;
             setIsFlipped(nowFlipped);
           }
 
@@ -68,25 +66,29 @@ export function IDCard({ pinTarget }: IDCardProps) {
       },
     });
 
-    if (bioTarget && containerRef.current) {
+    if (bioTarget) {
       tl.to(
-        containerRef.current,
+        containerEl,
         {
           x: () => {
             if (window.innerWidth < 1024) return 0;
-            const containerBounds = containerRef.current!.getBoundingClientRect();
-            const targetBounds = bioTarget.getBoundingClientRect();
-            const containerCenter = containerBounds.left + containerBounds.width / 2;
-            const targetCenter = targetBounds.left + targetBounds.width / 2;
-            return targetCenter - containerCenter;
+            const containerRect = containerEl.getBoundingClientRect();
+            const targetRect = bioTarget.getBoundingClientRect();
+            // Calculate center difference
+            const containerCenterX = containerRect.left + containerRect.width / 2;
+            const targetCenterX = targetRect.left + targetRect.width / 2;
+            // Subtract current transform offset to get net destination
+            const currentX = gsap.getProperty(containerEl, "x") as number || 0;
+            return targetCenterX - (containerCenterX - currentX);
           },
           y: () => {
             if (window.innerWidth < 1024) return 0;
-            const containerBounds = containerRef.current!.getBoundingClientRect();
-            const targetBounds = bioTarget.getBoundingClientRect();
-            const containerCenter = containerBounds.top + containerBounds.height / 2;
-            const targetCenter = targetBounds.top + targetBounds.height / 2;
-            return targetCenter - containerCenter;
+            const containerRect = containerEl.getBoundingClientRect();
+            const targetRect = bioTarget.getBoundingClientRect();
+            const containerCenterY = containerRect.top + containerRect.height / 2;
+            const targetCenterY = targetRect.top + targetRect.height / 2;
+            const currentY = gsap.getProperty(containerEl, "y") as number || 0;
+            return targetCenterY - (containerCenterY - currentY);
           },
           scale: () => (window.innerWidth < 1024 ? 1 : 0.92),
           ease: "power2.inOut",
@@ -121,9 +123,7 @@ export function IDCard({ pinTarget }: IDCardProps) {
     };
   }, [pinTarget]);
 
-  const [hoverTilt, setHoverTilt] = useState({ x: 0, y: 0 });
-  const [isHovered, setIsHovered] = useState(false);
-
+  // Hover Tilt Physics via GSAP quickTo (eliminates React style inline conflict)
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!cardRef.current) return;
     const rect = cardRef.current.getBoundingClientRect();
@@ -132,25 +132,41 @@ export function IDCard({ pinTarget }: IDCardProps) {
 
     const tiltX = (y / (rect.height / 2)) * -8;
     const tiltY = (x / (rect.width / 2)) * 8;
-    setHoverTilt({ x: tiltX, y: tiltY });
+
+    const currentBaseY = isFlippedRef.current ? 180 : 0;
+    gsap.to(cardRef.current, {
+      rotateX: tiltX,
+      rotateY: currentBaseY + tiltY,
+      duration: 0.2,
+      ease: "power2.out",
+      overwrite: "auto",
+    });
   };
 
-  const handleMouseEnter = () => setIsHovered(true);
-
   const handleMouseLeave = () => {
-    setIsHovered(false);
-    setHoverTilt({ x: 0, y: 0 });
+    if (!cardRef.current) return;
+    const currentBaseY = isFlippedRef.current ? 180 : 0;
+    gsap.to(cardRef.current, {
+      rotateX: 0,
+      rotateY: currentBaseY,
+      duration: 0.4,
+      ease: "power2.out",
+      overwrite: "auto",
+    });
   };
 
   const handleTapFlip = () => {
     if (!cardRef.current) return;
-    const targetY = isFlipped ? 0 : 180;
+    const newFlipped = !isFlippedRef.current;
+    isFlippedRef.current = newFlipped;
+    setIsFlipped(newFlipped);
+
     gsap.to(cardRef.current, {
-      rotateY: targetY,
+      rotateY: newFlipped ? 180 : 0,
       duration: 0.8,
       ease: "power2.out",
+      overwrite: "auto",
     });
-    setIsFlipped(!isFlipped);
   };
 
   return (
@@ -178,14 +194,8 @@ export function IDCard({ pinTarget }: IDCardProps) {
         ref={cardRef}
         onClick={handleTapFlip}
         onMouseMove={handleMouseMove}
-        onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
-        style={{
-          transform: isHovered
-            ? `rotateX(${hoverTilt.x}deg) rotateY(${isFlipped ? 180 + hoverTilt.y : hoverTilt.y}deg)`
-            : undefined,
-        }}
-        className="relative w-[320px] sm:w-[350px] h-[500px] cursor-pointer preserve-3d shadow-2xl transition-transform duration-200 ease-out -mt-1"
+        className="relative w-[320px] sm:w-[350px] h-[500px] cursor-pointer preserve-3d shadow-2xl transition-shadow duration-200 ease-out -mt-1"
       >
         {/* Hole Punch Circle */}
         <div className="absolute top-3 left-1/2 -translate-x-1/2 z-30 h-4 w-8 rounded-full bg-bg border border-line shadow-inner flex items-center justify-center">
@@ -194,12 +204,6 @@ export function IDCard({ pinTarget }: IDCardProps) {
 
         {/* FRONT FACE */}
         <div className="absolute inset-0 z-10 flex flex-col justify-between rounded-xl border-2 border-line bg-bg-elevated p-6 backface-hidden shadow-2xl overflow-hidden">
-          {/* Moving Reflection Sheen Overlay */}
-          <div
-            className={`pointer-events-none absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent transition-opacity duration-500 z-20 ${isHovered ? "opacity-100" : "opacity-0"
-              }`}
-          />
-
           {/* Terracotta Badge Corner Accents */}
           <div className="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-accent rounded-tl-xl" />
           <div className="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-accent rounded-tr-xl" />

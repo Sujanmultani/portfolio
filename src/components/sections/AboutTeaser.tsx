@@ -11,7 +11,12 @@ export function AboutTeaser() {
       <div className="mx-auto max-w-7xl px-6 md:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           {/* Left Column: 3D ID Card Landing Destination Target */}
-          <div id="bio-card-target" className="lg:col-span-5 relative min-h-0 lg:min-h-[540px] flex items-center justify-center rounded-xl border-0 lg:border lg:border-dashed lg:border-line/40 bg-transparent lg:bg-bg-elevated/10 p-0 lg:p-4">
+          <div id="bio-card-target" className="lg:col-span-5 relative min-h-0 lg:min-h-[540px] flex items-center justify-center p-0 lg:p-4">
+            {/* Desktop Target Placeholder Frame */}
+            <div className="hidden lg:flex w-full max-w-[350px] h-[500px] rounded-xl border-2 border-dashed border-line/60 bg-bg-elevated/10 items-center justify-center font-mono text-[10px] uppercase text-text-muted/40 tracking-widest">
+              [ 3D CREDENTIAL LANDING SLOT ]
+            </div>
+
             {/* Mobile / Fallback Card View */}
             <div className="block lg:hidden relative aspect-[4/5] w-full max-w-sm rounded-xl border-2 border-line bg-bg overflow-hidden shadow-2xl mx-auto my-4">
               <Image
