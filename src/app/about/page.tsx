@@ -4,83 +4,81 @@ import React, { useEffect, useRef } from "react";
 import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Download, CheckCircle2, Briefcase, GraduationCap, Code2, Server, Terminal, Cpu } from "lucide-react";
+import { Briefcase, GraduationCap, Code2, Server, Terminal, Cpu } from "lucide-react";
 
 const TIMELINE = [
   {
     year: "2024 — PRESENT",
-    role: "Principal Full-Stack Engineer",
-    company: "Vantage Systems Labs",
-    description: "Architecting real-time telemetry streaming platforms using Next.js App Router, Go microservices, and MongoDB. Reduced ingest latency by 64%.",
+    role: "Freelance Full-Stack Web Developer",
+    company: "MS Solutions — Surat, Gujarat",
+    description: "Architecting and shipping production-ready D2C e-commerce platforms (EyeLeads), custom web applications, and payment gateway integrations (Razorpay, Shiprocket).",
     type: "experience",
   },
   {
-    year: "2022 — 2024",
-    role: "Senior Systems Architect",
-    company: "Chronos Algorithmic Trading",
-    description: "Designed low-latency gRPC order matching engine and real-time operational audit dashboards for institutional fund trading.",
+    year: "2023 — PRESENT",
+    role: "Master of Computer Applications (MCA)",
+    company: "Postgraduate Student",
+    description: "Specializing in Full-Stack Web Architecture, Database Systems (MongoDB & SQL), Web API Design, and Software Engineering methodologies.",
+    type: "education",
+  },
+  {
+    year: "2024",
+    role: "Full-Stack Project Developer",
+    company: "EstatePortal (Capstone Build)",
+    description: "Engineered EstatePortal real estate marketplace featuring property filters, agent inquiry routing, NextAuth authentication, and role-based admin dashboard.",
     type: "experience",
   },
   {
-    year: "2020 — 2022",
-    role: "Lead Interactive Developer",
-    company: "Kintsugi Studio",
-    description: "Built custom block-based editorial engine with 3D scroll triggers and WebGL canvas backgrounds for Awwwards-winning publishing clients.",
-    type: "experience",
-  },
-  {
-    year: "2016 — 2020",
-    role: "B.S. in Computer Science & Engineering",
-    company: "University of California, Berkeley",
-    description: "Specialized in Distributed Systems, Compiler Design, and Interactive Computer Graphics. Graduated Magna Cum Laude.",
+    year: "2020 — 2023",
+    role: "Bachelor's Degree in Computer Studies",
+    company: "Undergraduate Graduation",
+    description: "Core academic foundation in Object-Oriented Programming, Web Technologies, Database Management, and Data Structures.",
     type: "education",
   },
 ];
 
 const SKILL_CATEGORIES = [
   {
-    title: "Frontend & Interface",
+    title: "Frontend & E-Commerce",
     icon: Code2,
     skills: [
-      { name: "Next.js 14 (App Router)", dots: 5 },
-      { name: "React & TypeScript", dots: 5 },
-      { name: "GSAP & ScrollTrigger", dots: 5 },
-      { name: "Tailwind CSS", dots: 5 },
-      { name: "Framer Motion", dots: 4 },
-      { name: "WebGL / CSS 3D", dots: 4 },
+      { name: "React & Next.js 14", dots: 5 },
+      { name: "TypeScript & JavaScript", dots: 5 },
+      { name: "Tailwind CSS & Styling", dots: 5 },
+      { name: "Razorpay & Payment Gateways", dots: 5 },
+      { name: "GSAP & ScrollTrigger", dots: 4 },
+      { name: "Framer Motion UI", dots: 4 },
     ],
   },
   {
-    title: "Backend & Systems",
+    title: "Backend & Databases",
     icon: Server,
     skills: [
       { name: "Node.js & Express", dots: 5 },
       { name: "MongoDB & Mongoose", dots: 5 },
-      { name: "Go (Golang)", dots: 4 },
-      { name: "REST & GraphQL APIs", dots: 5 },
-      { name: "Redis Caching", dots: 4 },
-      { name: "Python FastAPI", dots: 4 },
+      { name: "REST API Design", dots: 5 },
+      { name: "Shiprocket Logistics API", dots: 4 },
+      { name: "Authentication & JWT", dots: 4 },
     ],
   },
   {
-    title: "Architecture & DevOps",
+    title: "Architecture & Tools",
     icon: Cpu,
     skills: [
-      { name: "Vercel & AWS Deployments", dots: 5 },
-      { name: "Docker Containerization", dots: 4 },
-      { name: "System Design & Microservices", dots: 5 },
-      { name: "CI/CD Pipeline Automation", dots: 4 },
-      { name: "Database Schema Indexing", dots: 5 },
+      { name: "Vercel & Netlify Deployments", dots: 5 },
+      { name: "Git & GitHub Workflows", dots: 5 },
+      { name: "Responsive Mobile UI", dots: 5 },
+      { name: "SEO & Web Vitals Tuning", dots: 4 },
     ],
   },
   {
-    title: "Developer Tools",
+    title: "Developer Environment",
     icon: Terminal,
     skills: [
-      { name: "Git & GitHub Workflows", dots: 5 },
-      { name: "Postman & Insomnia", dots: 5 },
-      { name: "VS Code & Neovim", dots: 5 },
-      { name: "Performance Profiling", dots: 5 },
+      { name: "VS Code Setup", dots: 5 },
+      { name: "Postman API Testing", dots: 5 },
+      { name: "NPM & Package Management", dots: 5 },
+      { name: "Cross-Browser Testing", dots: 5 },
     ],
   },
 ];
@@ -124,23 +122,11 @@ export default function AboutPage() {
       <section className="mx-auto max-w-7xl px-6 md:px-12 space-y-6">
         <span className="eyebrow-label">03 — BIOGRAPHY &amp; SKILLS</span>
         <h1 className="font-display-fluid font-black text-text tracking-tight">
-          About &amp; Experience
+          About &amp; Background
         </h1>
         <p className="text-text-muted text-base md:text-xl max-w-3xl leading-relaxed">
-          I craft software where backend architectural integrity meets meticulous design engineering. Over 8 years in high-stakes engineering environments.
+          I am Sujan Multani — a freelance full-stack web developer and MCA student based in Surat, Gujarat. Operating as MS Solutions, I build responsive e-commerce web applications, full-stack systems, and modern digital craft.
         </p>
-
-        {/* Resume Download CTA */}
-        <div className="pt-4">
-          <a
-            href="/resume.pdf"
-            download
-            className="group inline-flex items-center gap-3 border-2 border-accent bg-accent px-6 py-3.5 font-mono text-xs font-bold uppercase tracking-wider text-bg transition-all duration-300 hover:bg-accent-hover hover:border-accent-hover shadow-lg"
-          >
-            <Download className="h-4 w-4" />
-            <span>Download Official Resume (PDF)</span>
-          </a>
-        </div>
       </section>
 
       {/* Story & Personal Photos Section */}
@@ -148,13 +134,13 @@ export default function AboutPage() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           <div className="lg:col-span-6 space-y-6">
             <h2 className="font-heading-fluid font-bold text-text tracking-tight">
-              A commitment to code clarity and editorial precision.
+              Honest engineering, clean code, and user-focused web development.
             </h2>
             <p className="text-text-muted leading-relaxed text-sm md:text-base">
-              My path began at UC Berkeley studying distributed software systems. Over the years, I realized that true product mastery requires equal excellence across the whole stack — from microsecond database query indexing to frame-perfect 60fps animations.
+              My journey in software development began with a passion for building practical digital tools. Currently pursuing my Master of Computer Applications (MCA) in Surat, I combine academic computer science fundamentals with real-world full-stack development experience.
             </p>
             <p className="text-text-muted leading-relaxed text-sm md:text-base">
-              Today, I help ambitious companies, startups, and creative studios architect digital systems built to scale. When not engineering code, I experiment with generative typography, physical computing, and mechanical keyboards.
+              Through MS Solutions, I work directly with business owners, brands, and startups to build high-converting e-commerce storefronts (like EyeLeads Eyewear Store), full-stack web applications, and responsive UI interfaces.
             </p>
           </div>
 
@@ -162,7 +148,7 @@ export default function AboutPage() {
             <div className="relative aspect-[3/4] rounded-lg border border-line overflow-hidden bg-bg-elevated">
               <Image
                 src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=600&auto=format&fit=crop"
-                alt="Engineering Team Collaboration"
+                alt="Web Development Collaboration"
                 fill
                 className="object-cover grayscale contrast-125 hover:grayscale-0 transition-all duration-500"
               />
@@ -170,7 +156,7 @@ export default function AboutPage() {
             <div className="relative aspect-[3/4] rounded-lg border border-line overflow-hidden bg-bg-elevated mt-6">
               <Image
                 src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=600&auto=format&fit=crop"
-                alt="Developer Workstation Studio"
+                alt="Developer Workstation"
                 fill
                 className="object-cover grayscale contrast-125 hover:grayscale-0 transition-all duration-500"
               />
@@ -184,7 +170,7 @@ export default function AboutPage() {
         <div className="space-y-3">
           <span className="eyebrow-label">CAREER CHRONOLOGY</span>
           <h2 className="font-heading-fluid font-extrabold text-text tracking-tight">
-            Experience &amp; Education
+            Background &amp; Education
           </h2>
         </div>
 

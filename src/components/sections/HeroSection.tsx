@@ -36,7 +36,7 @@ export function HeroSection() {
 
           {/* Elevated Manifesto Paragraph */}
           <p className="text-text-muted text-base md:text-lg max-w-2xl leading-relaxed">
-            Building software where engineering precision meets unforgettable digital experiences. Specialized in high-throughput Next.js architecture, distributed MongoDB pipelines, and scroll-driven 3D interaction.
+            Freelance Full-Stack Web Developer &amp; MCA Student based in Surat, Gujarat. Specialized in building production-ready e-commerce stores, responsive React &amp; Next.js web applications, and modern digital experiences.
           </p>
 
           {/* Action CTAs with Text-Slide Micro-Interactions */}
@@ -73,19 +73,19 @@ export function HeroSection() {
             </Link>
           </div>
 
-          {/* Trust Metrics Pills */}
+          {/* Real Metrics Pills */}
           <div className="pt-6 border-t border-line/60 flex flex-wrap items-center gap-6 text-xs font-mono text-text-muted">
             <div className="flex items-center gap-2">
               <span className="h-1.5 w-1.5 rounded-full bg-accent" />
-              <span>8+ YEARS ARCHITECTURE</span>
+              <span>MCA STUDENT (SURAT)</span>
             </div>
             <div className="flex items-center gap-2">
               <span className="h-1.5 w-1.5 rounded-full bg-accent" />
-              <span>45+ SYSTEMS SHIPPED</span>
+              <span>FULL-STACK DEVELOPER</span>
             </div>
             <div className="flex items-center gap-2">
               <span className="h-1.5 w-1.5 rounded-full bg-success" />
-              <span>99.9% UPTIME COMMITMENT</span>
+              <span>FREELANCE &amp; D2C PROJECTS</span>
             </div>
           </div>
         </motion.div>

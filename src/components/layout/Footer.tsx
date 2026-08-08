@@ -11,8 +11,8 @@ export function Footer() {
     const updateTime = () => {
       const now = new Date();
       setTimeString(
-        now.toLocaleTimeString("en-US", {
-          timeZone: "America/Los_Angeles",
+        now.toLocaleTimeString("en-IN", {
+          timeZone: "Asia/Kolkata",
           hour: "2-digit",
           minute: "2-digit",
           second: "2-digit",
@@ -33,8 +33,8 @@ export function Footer() {
   return (
     <footer className="relative border-t border-line bg-bg pt-20 pb-12 text-text overflow-hidden">
       {/* Huge Faded Architectural Watermark */}
-      <div className="pointer-events-none absolute bottom-0 left-1/2 -translate-x-1/2 select-none opacity-[0.03] whitespace-nowrap font-display text-[12vw] font-black uppercase tracking-tighter leading-none text-text">
-        SUJAN MULTANI // STAFF ENGINEER
+      <div className="pointer-events-none absolute bottom-0 left-1/2 -translate-x-1/2 select-none opacity-[0.03] whitespace-nowrap font-display text-[11vw] font-black uppercase tracking-tighter leading-none text-text">
+        SUJAN MULTANI // FULL STACK DEVELOPER
       </div>
 
       <div className="relative z-10 mx-auto max-w-7xl px-6 md:px-12">
@@ -45,24 +45,24 @@ export function Footer() {
               <span className="eyebrow-label">06 — GET IN TOUCH</span>
               <span className="inline-flex items-center gap-1.5 rounded-full border border-line bg-bg-elevated px-3 py-1 font-mono text-[10px] text-text-muted">
                 <span className="h-1.5 w-1.5 rounded-full bg-success animate-pulse" />
-                <span>AVAILABLE Q3/Q4</span>
+                <span>AVAILABLE FOR FREELANCE &amp; CONTRACTS</span>
               </span>
             </div>
 
             <h2 className="font-heading-fluid font-bold text-text tracking-tight">
-              Let&apos;s engineer something extraordinary together.
+              Let&apos;s build something extraordinary together.
             </h2>
             <p className="text-text-muted text-sm max-w-md leading-relaxed">
-              Available for select full-stack architecture contracts, high-throughput backend design, and creative motion engineering.
+              Available for full-stack e-commerce development, Next.js web platforms, and custom web application projects.
             </p>
             <div className="pt-2">
               <a
-                href="mailto:hello@developer.com"
+                href="mailto:sujanmultani@gmail.com"
                 className="group inline-flex items-center gap-3 text-lg font-mono font-medium text-accent hover:text-accent-hover transition-colors"
               >
                 <Mail className="h-5 w-5" />
                 <span className="underline underline-offset-4 decoration-accent/40 group-hover:decoration-accent">
-                  hello@developer.com
+                  sujanmultani@gmail.com
                 </span>
               </a>
             </div>
@@ -100,7 +100,7 @@ export function Footer() {
             <h3 className="font-mono text-xs uppercase tracking-widest text-text-muted">Connect</h3>
             <div className="flex flex-col gap-3 text-sm font-mono">
               <a
-                href="https://github.com"
+                href="https://github.com/Sujanmultani"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 text-text-muted hover:text-accent transition-colors"
@@ -109,7 +109,7 @@ export function Footer() {
                 <span>GitHub</span>
               </a>
               <a
-                href="https://linkedin.com"
+                href="https://www.linkedin.com/in/sujan-multani"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 text-text-muted hover:text-accent transition-colors"
@@ -118,7 +118,7 @@ export function Footer() {
                 <span>LinkedIn</span>
               </a>
               <a
-                href="https://twitter.com"
+                href="https://x.com/sujanmultani"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 text-text-muted hover:text-accent transition-colors"
@@ -133,14 +133,14 @@ export function Footer() {
         {/* Footer Bottom Meta Bar */}
         <div className="pt-8 flex flex-col md:flex-row items-center justify-between gap-6 text-xs text-text-muted font-mono">
           <div className="flex flex-wrap items-center gap-6">
-            <span>© {new Date().getFullYear()} Studio Portfolio. All Rights Reserved.</span>
+            <span>© {new Date().getFullYear()} Sujan Multani. All Rights Reserved.</span>
             <span className="hidden md:inline text-line">|</span>
             <span>
-              LOCATION: <strong className="text-text font-normal">SAN FRANCISCO, CA</strong>
+              LOCATION: <strong className="text-text font-normal">SURAT, GUJARAT, INDIA</strong>
             </span>
             <span className="hidden md:inline text-line">|</span>
             <span>
-              LOCAL TIME: <strong className="text-text font-normal">{timeString || "12:00:00 PM"} PST</strong>
+              LOCAL TIME: <strong className="text-text font-normal">{timeString || "12:00:00 PM"} IST</strong>
             </span>
           </div>
 

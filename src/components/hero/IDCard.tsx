@@ -211,10 +211,10 @@ export function IDCard({ pinTarget }: IDCardProps) {
             <div className="flex items-center gap-2">
               <ShieldCheck className="h-4 w-4 text-accent" />
               <span className="font-mono text-[10px] tracking-widest text-text-muted uppercase">
-                STUDIO CREDENTIAL
+                MS SOLUTIONS // DEVELOPER
               </span>
             </div>
-            <span className="font-mono text-[10px] font-bold text-accent">ID #8049-FX</span>
+            <span className="font-mono text-[10px] font-bold text-accent">SURAT, IN</span>
           </div>
 
           {/* Profile Photo (Portrait Crop) */}
@@ -228,7 +228,7 @@ export function IDCard({ pinTarget }: IDCardProps) {
               priority
             />
             <div className="absolute bottom-2 left-2 rounded bg-bg/90 backdrop-blur border border-line px-2 py-0.5 text-[9px] font-mono text-text">
-              VERIFIED ARCHITECT
+              FULL-STACK DEVELOPER
             </div>
           </div>
 
@@ -238,15 +238,15 @@ export function IDCard({ pinTarget }: IDCardProps) {
               Sujan Multani
             </h3>
             <p className="font-mono text-xs text-text-muted tracking-wide">
-              Full-Stack Web Developer
+              Freelance Full-Stack Developer
             </p>
           </div>
 
           {/* Badge Footer with QR Graphic */}
           <div className="flex items-center justify-between pt-3 border-t border-line text-xs font-mono text-text-muted">
             <div className="space-y-0.5">
-              <p className="text-[9px] uppercase tracking-wider">ISSUED: 2026.08</p>
-              <p className="text-[9px] text-accent uppercase tracking-wider">CLEARANCE: LEVEL 5</p>
+              <p className="text-[9px] uppercase tracking-wider">MCA STUDENT</p>
+              <p className="text-[9px] text-accent uppercase tracking-wider">SURAT, GUJARAT, INDIA</p>
             </div>
             <div className="flex items-center justify-center p-1 border border-line bg-bg rounded">
               <QrCode className="h-6 w-6 text-text" />

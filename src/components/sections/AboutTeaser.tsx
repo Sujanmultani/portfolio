@@ -25,16 +25,16 @@ export function AboutTeaser() {
               <div className="absolute bottom-4 left-4 right-4 p-3 rounded border border-line bg-bg/90 backdrop-blur font-mono text-center">
                 <div className="grid grid-cols-3 gap-2">
                   <div>
-                    <span className="block text-lg font-bold text-accent">8+</span>
-                    <span className="text-[9px] text-text-muted uppercase">Years Exp.</span>
+                    <span className="block text-sm font-bold text-accent">MCA</span>
+                    <span className="text-[9px] text-text-muted uppercase">DEGREE</span>
                   </div>
                   <div className="border-x border-line">
-                    <span className="block text-lg font-bold text-text">45+</span>
-                    <span className="text-[9px] text-text-muted uppercase">Shipped</span>
+                    <span className="block text-xs font-bold text-text">FULL-STACK</span>
+                    <span className="text-[9px] text-text-muted uppercase">DEV</span>
                   </div>
                   <div>
-                    <span className="block text-lg font-bold text-success">99.9%</span>
-                    <span className="text-[9px] text-text-muted uppercase">Uptime</span>
+                    <span className="block text-xs font-bold text-success">SURAT</span>
+                    <span className="text-[9px] text-text-muted uppercase">GUJARAT</span>
                   </div>
                 </div>
               </div>
@@ -43,12 +43,12 @@ export function AboutTeaser() {
 
           {/* Right Column: Editorial Pillars Narrative */}
           <div className="lg:col-span-7 space-y-6">
-            <span className="eyebrow-label">02 — BIOGRAPHY &amp; ARCHITECTURE</span>
+            <span className="eyebrow-label">02 — BIOGRAPHY &amp; CAPABILITIES</span>
             <h2 className="font-heading-fluid font-bold text-text tracking-tight">
-              Engineering with architectural rigor and editorial perfection.
+              Crafting modern web applications with technical precision.
             </h2>
             <p className="text-text-muted text-base md:text-lg leading-relaxed">
-              Software is most effective when technical resilience and creative motion operate in total harmony. I specialize in 3 core engineering pillars:
+              Full-Stack Web Developer and MCA student based in Surat, Gujarat. Operating as MS Solutions, I build responsive e-commerce web platforms and web applications focused on 3 core capabilities:
             </p>
 
             {/* 3 Editorial Pillars */}
@@ -56,9 +56,9 @@ export function AboutTeaser() {
               <div className="flex items-start gap-3 border border-line bg-bg p-4 rounded-md">
                 <Layers className="h-5 w-5 text-accent shrink-0 mt-0.5" />
                 <div>
-                  <h4 className="font-display text-sm font-bold text-text">Distributed System Architecture</h4>
+                  <h4 className="font-display text-sm font-bold text-text">Full-Stack E-Commerce &amp; Web Apps</h4>
                   <p className="font-mono text-xs text-text-muted mt-0.5">
-                    High-throughput Next.js 14 App Router, lock-free microservices, and indexed MongoDB data pipelines.
+                    React, Next.js, Node.js, Express, MongoDB, and payment gateway integration (Razorpay, Shiprocket).
                   </p>
                 </div>
               </div>
@@ -66,9 +66,9 @@ export function AboutTeaser() {
               <div className="flex items-start gap-3 border border-line bg-bg p-4 rounded-md">
                 <ShieldCheck className="h-5 w-5 text-accent shrink-0 mt-0.5" />
                 <div>
-                  <h4 className="font-display text-sm font-bold text-text">Performance &amp; Type Precision</h4>
+                  <h4 className="font-display text-sm font-bold text-text">TypeScript &amp; Responsive Engineering</h4>
                   <p className="font-mono text-xs text-text-muted mt-0.5">
-                    Strict TypeScript contracts, sub-5ms API response latency, and zero-layout-shift render cycles.
+                    Structured TypeScript contracts, clean REST APIs, and mobile-first Tailwind CSS styling.
                   </p>
                 </div>
               </div>
@@ -76,9 +76,9 @@ export function AboutTeaser() {
               <div className="flex items-start gap-3 border border-line bg-bg p-4 rounded-md">
                 <Sparkles className="h-5 w-5 text-accent shrink-0 mt-0.5" />
                 <div>
-                  <h4 className="font-display text-sm font-bold text-text">Scroll-Driven Motion &amp; 3D Physics</h4>
+                  <h4 className="font-display text-sm font-bold text-text">Interactive UI &amp; Motion Design</h4>
                   <p className="font-mono text-xs text-text-muted mt-0.5">
-                    GSAP ScrollTrigger, Lenis smooth scroll, and hardware-accelerated 3D transform interactions.
+                    GSAP ScrollTrigger, Lenis smooth scroll, and Framer Motion micro-interactions.
                   </p>
                 </div>
               </div>

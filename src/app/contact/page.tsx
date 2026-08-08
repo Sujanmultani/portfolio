@@ -98,16 +98,16 @@ export default function ContactPage() {
 
               <div className="space-y-4 pt-4 border-t border-line font-mono text-xs">
                 <a
-                  href="mailto:hello@developer.com"
+                  href="mailto:sujanmultani@gmail.com"
                   className="flex items-center gap-3 text-text hover:text-accent transition-colors"
                 >
                   <Mail className="h-4 w-4 text-accent" />
-                  <span>hello@developer.com</span>
+                  <span>sujanmultani@gmail.com</span>
                 </a>
 
                 <div className="flex items-center gap-3 text-text-muted">
                   <MapPin className="h-4 w-4 text-accent" />
-                  <span>San Francisco, California, USA (UTC-7)</span>
+                  <span>Surat, Gujarat, India (UTC+5:30 / IST)</span>
                 </div>
               </div>
             </div>
@@ -117,7 +117,7 @@ export default function ContactPage() {
               <h3 className="font-display text-xl font-bold text-text">Social Channels</h3>
               <div className="flex flex-col gap-3 font-mono text-xs">
                 <a
-                  href="https://github.com"
+                  href="https://github.com/Sujanmultani"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-3 text-text-muted hover:text-accent transition-colors"
@@ -126,7 +126,7 @@ export default function ContactPage() {
                   <span>GitHub Profile</span>
                 </a>
                 <a
-                  href="https://linkedin.com"
+                  href="https://www.linkedin.com/in/sujan-multani"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-3 text-text-muted hover:text-accent transition-colors"
@@ -135,7 +135,7 @@ export default function ContactPage() {
                   <span>LinkedIn Profile</span>
                 </a>
                 <a
-                  href="https://twitter.com"
+                  href="https://x.com/sujanmultani"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-3 text-text-muted hover:text-accent transition-colors"
@@ -216,7 +216,7 @@ export default function ContactPage() {
                           required
                           value={formData.name}
                           onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                          placeholder="e.g. Eleanor Vance"
+                          placeholder="e.g. John Doe"
                           className="w-full border border-line bg-bg px-4 py-3 text-sm text-text placeholder-text-muted/60 focus:border-accent focus:outline-none transition-colors"
                         />
                       </div>

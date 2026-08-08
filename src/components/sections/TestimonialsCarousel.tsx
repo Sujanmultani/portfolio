@@ -2,36 +2,36 @@
 
 import React, { useRef } from "react";
 import { motion } from "framer-motion";
-import { Cpu, ShieldCheck, Zap, Activity } from "lucide-react";
+import { ShoppingCart, Code2, Sparkles, Wrench } from "lucide-react";
 
-const ENGINEERING_METRICS = [
+const SERVICES_WORKFLOW = [
   {
-    metric: "99.999%",
-    label: "Uptime Availability",
-    description: "Deterministic lock-free financial order matching pipeline with microsecond drift control.",
-    system: "Chronos Engine",
-    icon: ShieldCheck,
+    title: "E-Commerce Development",
+    subtitle: "D2C Stores & Payment Gateways",
+    description: "Custom online store development with React/Next.js, Razorpay payment gateway integration, Shiprocket shipping APIs, product catalogs, and custom checkout flows.",
+    category: "SERVICE 01",
+    icon: ShoppingCart,
   },
   {
-    metric: "64%",
-    label: "Latency Reduction",
-    description: "Multi-dimensional telemetry ingest stream processing optimized using Next.js & MongoDB vector queries.",
-    system: "Aura Neural Analytics",
-    icon: Zap,
+    title: "Full-Stack Web Applications",
+    subtitle: "MERN Stack & Next.js Architecture",
+    description: "End-to-end web application development using React, Next.js 14 App Router, Node.js, Express, and MongoDB with clean REST API architecture.",
+    category: "SERVICE 02",
+    icon: Code2,
   },
   {
-    metric: "180%",
-    label: "Engagement Increase",
-    description: "Block-based 3D scroll interaction publishing engine recognized on Awwwards Site of the Day.",
-    system: "Kintsugi Engine",
-    icon: Activity,
+    title: "UI/UX & Motion Engineering",
+    subtitle: "GSAP & Framer Motion UI",
+    description: "High-performance, responsive frontends featuring custom GSAP ScrollTrigger animations, smooth Lenis scrolling, and pixel-perfect dark UI aesthetics.",
+    category: "SERVICE 03",
+    icon: Sparkles,
   },
   {
-    metric: "15,000+",
-    label: "Active Engineers",
-    description: "Hardware-accelerated spatial audio workspace with zero buffer underruns across web browsers.",
-    system: "Vortex Spatial Audio",
-    icon: Cpu,
+    title: "Maintenance & Optimization",
+    subtitle: "Performance & Bug Resolution",
+    description: "Refactoring legacy codebases, fixing layout/responsiveness bugs, optimizing load speed, and deploying live production applications.",
+    category: "SERVICE 04",
+    icon: Wrench,
   },
 ];
 
@@ -41,9 +41,9 @@ export function TestimonialsCarousel() {
   return (
     <section className="relative py-24 border-t border-line bg-bg overflow-hidden">
       <div className="mx-auto max-w-7xl px-6 md:px-12 mb-12">
-        <span className="eyebrow-label">04 — SYSTEM BENCHMARKS</span>
+        <span className="eyebrow-label">04 — SERVICES &amp; SPECIALIZATIONS</span>
         <h2 className="font-heading-fluid font-extrabold text-text tracking-tight mt-3">
-          Engineering impact &amp; verified metrics.
+          Core engineering services &amp; solutions.
         </h2>
       </div>
 
@@ -53,7 +53,7 @@ export function TestimonialsCarousel() {
           className="flex gap-6 cursor-grab active:cursor-grabbing overflow-x-auto pb-6 scrollbar-none"
           data-cursor="Drag"
         >
-          {ENGINEERING_METRICS.map((item, index) => {
+          {SERVICES_WORKFLOW.map((item, index) => {
             const Icon = item.icon;
             return (
               <div
@@ -66,16 +66,16 @@ export function TestimonialsCarousel() {
                       <Icon className="h-5 w-5" />
                     </div>
                     <span className="font-mono text-[10px] uppercase border border-line bg-bg px-2.5 py-1 text-accent font-bold">
-                      VERIFIED
+                      {item.category}
                     </span>
                   </div>
 
                   <div>
-                    <span className="font-display text-4xl md:text-5xl font-black text-text group-hover:text-accent transition-colors">
-                      {item.metric}
-                    </span>
+                    <h3 className="font-display text-2xl font-bold text-text group-hover:text-accent transition-colors">
+                      {item.title}
+                    </h3>
                     <span className="block font-mono text-xs text-text-muted mt-1 uppercase tracking-wider font-semibold">
-                      {item.label}
+                      {item.subtitle}
                     </span>
                   </div>
 
@@ -85,8 +85,8 @@ export function TestimonialsCarousel() {
                 </div>
 
                 <div className="pt-4 border-t border-line flex items-center justify-between font-mono text-xs text-text">
-                  <span className="text-text-muted text-[11px]">SYSTEM</span>
-                  <span className="font-bold text-accent">{item.system}</span>
+                  <span className="text-text-muted text-[11px]">DEVELOPER</span>
+                  <span className="font-bold text-accent">SUJAN MULTANI</span>
                 </div>
               </div>
             );

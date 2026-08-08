@@ -46,7 +46,7 @@ export async function POST(request: NextRequest) {
     // Send email notification if Nodemailer / SMTP settings exist
     let emailSent = false;
     const apiKey = process.env.EMAIL_SERVICE_API_KEY;
-    const receiver = process.env.CONTACT_RECEIVER_EMAIL || "hello@developer.com";
+    const receiver = process.env.CONTACT_RECEIVER_EMAIL || "sujanmultani@gmail.com";
 
     if (apiKey && apiKey !== "your_email_api_key_or_smtp_pass" && apiKey !== "local_dummy_key") {
       try {
