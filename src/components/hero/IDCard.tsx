@@ -232,12 +232,16 @@ export function IDCard({ pinTarget }: IDCardProps) {
             </div>
           </div>
 
-          {/* Name & Title */}
-          <div className="space-y-1">
-            <h3 className="font-display text-2xl font-bold tracking-tight text-text">
+          {/* Name & Title with Ambient Animated Aurora Glow */}
+          <div className="relative space-y-1 py-1">
+            <div
+              className="pointer-events-none absolute -inset-3 rounded-2xl bg-gradient-to-r from-accent/30 via-accent-hover/20 to-accent/30 opacity-60 blur-xl motion-safe:animate-aurora-glow motion-reduce:animate-none z-0"
+              aria-hidden="true"
+            />
+            <h3 className="relative z-10 font-display text-2xl font-bold tracking-tight text-text drop-shadow-sm">
               Sujan Multani
             </h3>
-            <p className="font-mono text-xs text-text-muted tracking-wide">
+            <p className="relative z-10 font-mono text-xs text-text-muted tracking-wide">
               Freelance Full-Stack Developer
             </p>
           </div>

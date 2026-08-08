@@ -26,11 +26,26 @@ const config: Config = {
       },
       animation: {
         "marquee-infinite": "marquee 50s linear infinite",
+        "aurora-glow": "auroraGlow 10s ease-in-out infinite alternate",
       },
       keyframes: {
         marquee: {
           "0%": { transform: "translateX(0%)" },
           "100%": { transform: "translateX(-50%)" },
+        },
+        auroraGlow: {
+          "0%": {
+            transform: "translate3d(0px, 0px, 0) scale(0.95)",
+            opacity: "0.4",
+          },
+          "50%": {
+            transform: "translate3d(6px, -4px, 0) scale(1.08)",
+            opacity: "0.75",
+          },
+          "100%": {
+            transform: "translate3d(-6px, 4px, 0) scale(0.98)",
+            opacity: "0.5",
+          },
         },
       },
     },
