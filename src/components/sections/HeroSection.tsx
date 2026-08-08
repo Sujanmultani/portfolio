@@ -14,16 +14,16 @@ export function HeroSection() {
       ref={sectionRef}
       className="relative min-h-[90vh] flex flex-col justify-center px-6 md:px-12 mx-auto max-w-7xl pt-6 pb-16 overflow-hidden"
     >
-      {/* Oversized Scrolling Background Name Marquee */}
+      {/* Oversized Scrolling Background Name Marquee (Contained Below Navbar) */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 top-1/2 -translate-y-1/2 z-0 select-none overflow-hidden opacity-[0.04] md:opacity-[0.05]"
+        className="pointer-events-none absolute inset-x-0 top-[52%] -translate-y-1/2 z-0 select-none overflow-hidden opacity-[0.04] md:opacity-[0.05]"
       >
         <div className="flex w-max motion-safe:animate-marquee-infinite motion-reduce:animate-none [will-change:transform]">
           {[...Array(4)].map((_, i) => (
             <span
               key={i}
-              className="font-display font-black text-[18vw] lg:text-[14vw] uppercase tracking-tighter text-text whitespace-nowrap px-8 leading-none"
+              className="font-display font-black text-[16vw] lg:text-[11vw] uppercase tracking-tighter text-text whitespace-nowrap px-8 leading-none"
             >
               SUJAN MULTANI <span className="text-accent mx-4">•</span>
             </span>

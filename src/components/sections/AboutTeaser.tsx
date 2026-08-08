@@ -10,10 +10,9 @@ export function AboutTeaser() {
     <section className="relative py-24 border-t border-line bg-bg-elevated/30">
       <div className="mx-auto max-w-7xl px-6 md:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          {/* Left Column: 3D ID Card Landing Destination Target */}
-          <div id="bio-card-target" className="lg:col-span-5 relative min-h-0 lg:min-h-[560px] flex items-center justify-center rounded-xl border-0 lg:border lg:border-line/40 bg-transparent lg:bg-bg-elevated/10 p-0 lg:p-4">
-            {/* Mobile / Fallback Card View */}
-            <div className="block lg:hidden relative aspect-[4/5] w-full max-w-sm rounded-xl border-2 border-line bg-bg overflow-hidden shadow-2xl mx-auto my-4">
+          {/* Left Column: Profile Card Frame Target & Portrait View */}
+          <div id="bio-card-target" className="lg:col-span-5 relative min-h-[480px] lg:min-h-[540px] flex items-center justify-center rounded-xl border border-line/40 bg-bg-elevated/20 p-4 shadow-xl">
+            <div className="relative aspect-[4/5] w-full max-w-sm rounded-xl border-2 border-line bg-bg overflow-hidden shadow-2xl mx-auto">
               <Image
                 src="/profile.jpg"
                 alt="Developer Profile Portrait"
